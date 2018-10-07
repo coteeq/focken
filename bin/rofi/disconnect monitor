@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xrandr --output eDP-1 --mode 3200x1800 --left-of HDMI-1
+xrandr --output HDMI-1 --off
+

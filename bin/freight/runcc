@@ -1,0 +1,105 @@
+#!/usr/bin/python
+import sys
+from os.path import isfile
+import os
+import time
+from hashlib import md5
+import subprocess as sp
+
+
+
+DATA_DEFAULT = {
+            'files': [],
+            'std': 14,
+            'bin_path': '~/.binruncc/',
+            'flags': [
+                    '-lstdc++',
+                    '-Wall',
+                    '-Wextra'
+                ],
+            'colors': {
+                    'time': 35
+                }
+        }
+
+class DotRuncc(object):
+    def __init__(self):
+        from json import load
+        if isfile('.runcc'):
+            with open('.runcc') as fd:
+                self.data = load(fd)
+                if self.data is None:
+                    print('RUNCC: W: Failed to read json cache. May lead to errors')
+                    self.data = DATA_DEFAULT
+        else:
+            self.data = DATA_DEFAULT
+
+    def get(self, filename, prop):
+        if filename in self.data:
+            if prop in self.data['files']:
+                return self.data[filename][prop]
+            else:
+                raise KeyError('No such prop')
+        else:
+            raise NameError('Filename not present in cache')
+
+    def put(self, filename, **kwargs):
+        if filename not in self.data:
+            self.data[filename] = {}
+
+        for key, value in kwargs.items():
+            self.data[filename][key] = value
+
+    def close_data(self):
+        from json import dumps
+        with open('.runcc', 'w') as fd:
+            fd.write(dumps(self.data))
+            fd.truncate()
+
+    def update(self, source):
+        self.data[source] = self.get_time_for_file(source)
+
+if len(sys.argv) < 2:
+    sys.exit(1)
+
+
+class Executor(object):
+    def __init__(self, flags=['-Wall', '-lstdc++'], cc='g++'):
+        self.flags = flags
+        self.cc = cc
+
+    def compile(self, f_in, f_out):
+        system()
+
+flags = '-lstdc++ --std=c++14 -Wall -Wextra -Wshadow -pedantic'
+
+source = sys.argv[1]
+if not source.endswith('.cpp'):
+    source += '.cpp'
+
+data = DotRuncc()
+
+if data.get_time_from_cache(source) != data.get_time_for_file(source) or not isfile(source[:-4] + '.run'):
+    searcher.update(source)
+    os.system(f'g++ {source} {flags} -o{source[:-4]}.run')
+
+if len(sys.argv) > 2:
+    echo = ' '.join(sys.argv[2:])
+
+    cmd = f'echo {echo} | ./{source[:-4]}.run'
+
+    start = time.time()
+    os.system(f'bash -c "{cmd}"')
+    total = time.time() - start
+    print(f'\x1b[35m                                       {total:.3}s\x1b[0m')
+
+else:
+    print('\x1b[32mREADY IN ONE\x1b[0m', end='')
+    sys.stdout.flush()
+    time.sleep(0.4)
+    print('\r                         \r', end='')
+    sys.stdout.flush()
+
+    os.system(f'./{source[:-4]}.run')
+
+searcher.close_data()

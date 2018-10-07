@@ -1,0 +1,1 @@
+/home/syn/code/unpain/.zprofile

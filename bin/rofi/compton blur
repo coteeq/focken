@@ -1,0 +1,3 @@
+#!/bin/sh
+compton --config ~/.config/awesome/compton.conf
+

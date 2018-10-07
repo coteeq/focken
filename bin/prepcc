@@ -1,0 +1,39 @@
+#!/usr/bin/python
+import sys
+import os
+
+if len(sys.argv) < 2:
+    sys.exit(-1)
+
+the_code = '''#include <bits/stdc++.h>
+using namespace std;
+
+#define long int64_t
+#define i64 int64_t
+#define u64 uint64_t
+#define mp make_pair
+#define pll pair <int64_t, int64_t>
+#define pii pair <int, int>
+#define x first
+#define y second
+#define graph_n1 vector <vector <int>> (n + 1);
+
+
+int main () {
+    long n;
+    cin >> n;
+    
+    cout << n;
+}
+
+'''
+
+filename = sys.argv[1]
+if not filename.endswith('.cc'):
+    filename += '.cc'
+
+with open(filename, 'w') as fd:
+    fd.write(the_code)
+
+print('\x1b[32mOK\x1b[0m')
+
