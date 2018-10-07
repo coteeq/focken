@@ -1,0 +1,7 @@
+Usage:
+
+$ sh symlink.sh
+
+This will symlink some necessary files to this directory.
+DO NOT REMOVE THIS DIR AFTER INSTALLATION
+
