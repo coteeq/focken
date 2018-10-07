@@ -1,0 +1,4 @@
+ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/syn/bin/i3blocks/acpi_up.sh"
+ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/syn/bin/i3blocks/acpi_down.sh"
+
+
