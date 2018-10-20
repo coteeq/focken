@@ -324,10 +324,10 @@ case "$1" in
 		convert "$orig_wall" -resize "$res""^" -gravity center -extent "$res" "$resized"
 
 		echo
-		echo "Applying dim and blur effect to resized image"
+        printf "\rApplying dim and blur effect to resized image (0/3)"
 		# dim
 		convert "$resized" -fill black -colorize 40% "$dim"
-
+        printf "\rApplying dim and blur effect to resized image (1/3)"
 		# blur
 		blur_shrink=$(echo "scale=2; 20 / $blur_level" | bc)
 		blur_sigma=$(echo "scale=2; 0.6 * $blur_level" | bc)
@@ -337,30 +337,34 @@ case "$1" in
 			-define "filter:sigma=$blur_sigma" \
 			-resize "$res^" -gravity center -extent "$res" \
 			"$blur"
-
-		# dimblur
+        printf "\rApplying dim and blur effect to resized image (2/3)"
+        # dimblur
 		convert "$dim" \
 			-filter Gaussian \
 			-resize "$blur_shrink%" \
 			-define "filter:sigma=$blur_sigma" \
 			-resize "$res^" -gravity center -extent "$res" \
 			"$dimblur"
-
-		# lockscreen backgrounds
-
-		echo
-		echo "Caching images for faster screen locking"
+        printf "\rApplying dim and blur effect to resized image (3/3)"
+		
+        
+        # lockscreen backgrounds
+        echo
+        printf "Drawing rects (0/4)"
 		# resized
-	convert "$resized" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_resized"
-
+    	convert "$resized" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_resized"
+        printf "\rDrawing rects (1/4)"
 		# dim
 		convert "$dim" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_dim"
+        printf "\rDrawing rects (2/4)"
 
 		# blur
 		convert "$blur" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_blur"
+        printf "\rDrawing rects (3/4)"
 
 		# blur
 		convert "$dimblur" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_dimblur"
+        printf "\rDrawing rects (4/4)"
 		echo
 		echo "All required changes have been applied"
 		;;
