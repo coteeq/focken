@@ -38,7 +38,7 @@ label=
 instance=Master
 interval=once
 signal=10
-color=#58B898
+color=#929898
 markup=pango
 
 [backlight]
@@ -46,6 +46,7 @@ label=
 command=xbacklight -get
 interval=once
 signal=14
+color=#B2D9D9
 
 #[temperature]
 #interval=20
@@ -57,7 +58,6 @@ signal=14
 #interval=20
 
 [network]
-instance=wlp1s0
 interval=300
 signal=16
 command=~/bin/i3blocks/get_wifi.sh
@@ -69,7 +69,7 @@ interval=36000
 signal=13
 
 [time]
-command=date '+%Y-%m-%d  <span color="#58B898">%H:%M</span>'
+command=date '+%Y-%m-%d <span color="#30918B">%H:%M</span>'
 interval=30
 markup=pango
 
@@ -77,12 +77,7 @@ markup=pango
 command=~/bin/i3blocks/show_bat.sh
 interval=30
 signal=15
-color="#303030"
 markup=pango
-
-#[bandwidth]
-#instance=enp0s20u2
-#interval=1
 
 # Generic media player support
 #
@@ -93,29 +88,3 @@ markup=pango
 #interval=5
 #signal=10
 
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-#[openvpn]
-#interval=20
-
-# Temperature
-#
-# Support multiple chips, though lm-sensors.
-## The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-# Key indicators
-#
-# Add the following bindings to i3 config file:
-#
-# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-#[keyindicator]
-#instance=CAPS
-#interval=once
-#signal=11
-
-#[keyindicator]
-#instance=NUM
-#interval=once
-#signal=11

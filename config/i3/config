@@ -169,19 +169,18 @@ bar {
     status_command i3blocks
     position                bottom
     tray_output             primary
-    separator_symbol        " • "
+    separator_symbol        "  "
     workspace_buttons       yes
     strip_workspace_numbers yes
 
     colors {
-        background  #282c34
+        background  #122020
         statusline  #E0E0E0
         separator   #383c44
         # class             border  backgr. text
-        focused_workspace   #FFFFFF #FFFFFF #000000
-        #focused_workspace   #485f6d #485f6d #FFFFFF
+        focused_workspace   #50B9B2 #50B9B2 #000000
         active_workspace    #212121 #212121 #FFFFFF
-        inactive_workspace  #282c34 #282c34 #A9A9B9
+        inactive_workspace  #122020 #122020 #B2D9D9
         urgent_workspace    #D64E4E #D64E4E #FFFFFF
     }
 }
