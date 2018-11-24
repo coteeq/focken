@@ -9,7 +9,7 @@
  */
  
  configuration {
-	modi: "ssh,drun,syn:~/bin/rofi_run.sh";
+	modi: "drun,syn:~/bin/rofi_run.sh";
 	//width: 500;
 	//lines: 20;
 	columns: 1;
