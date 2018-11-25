@@ -1,0 +1,4 @@
+#/bin/sh
+date +%Y-%m-%d
+date +%Y-%m-%d
+echo "#808080"

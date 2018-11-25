@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xkb-switch -p | sed s/us/EN/g | sed s/ru/RU/g
+xkb-switch -p | sed s/us/EN/g | sed s/ru/RU/g
+echo '#80C0C0'

@@ -1,0 +1,31 @@
+#! /bin/sh
+
+pgrep sxhkd > /dev/null || sxhkd &
+setxkbmap -layout us,ru
+~/bin/bls -w
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+blockbar ~/.config/blockbar/blockbar.json &
+pulseaudio -D
+
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n blockbar)
+
+bspc config border_width         0
+bspc config window_gap           0
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config bottom_padding       50
+
+while read line; do
+    ~/.config/blockbar/workspaces
+done < <(bspc subscribe) &
+
+while read line; do bbc exec $(bbc list | grep vol | awk '{print $1}'); done < <(pactl subscribe) &
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+

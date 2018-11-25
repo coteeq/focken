@@ -1,0 +1,19 @@
+#!/bin/sh
+if [[ ! -z "$(ip link show | grep enp0)" ]]
+then
+    if [[ ! -z "$(ip link show | grep POINTOPOINT)" ]]
+    then
+        printf '%s\n' $(ip link show | grep -Po "(wg[0-9]+)")
+        printf '%s\n' $(ip link show | grep -Po "(wg[0-9]+)")
+        printf '#309068'
+    else
+        printf '%s\n' $(ip link show | grep -Po "(enp0s[0-9]+u[0-9]+)")
+        printf '%s\n' $(ip link show | grep -Po "(enp0s[0-9]+u[0-9]+)")
+        printf '#5080A0'
+    fi
+else
+    printf '%s\n' "down"
+    printf '%s\n' "down"
+    printf '#505050'
+fi
+

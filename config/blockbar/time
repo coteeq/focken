@@ -1,0 +1,4 @@
+#/bin/sh
+date +%H:%M
+date +%H:%M
+echo "#C0C0D0"

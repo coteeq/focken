@@ -1,0 +1,11 @@
+#!/bin/sh
+vol=$(pacmd list-sinks | sed -n '/properties:/q;p')
+
+if [[ -z $(echo $vol | grep "muted: yes") ]]
+then
+    pacmd list-sinks | grep "volume: front-left: " | grep -Po "[0-9]+%"
+    echo '#808080'
+else
+    printf 'X\nX\n#808080'
+fi
+

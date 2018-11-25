@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ACPI_OUT=$(acpi)
+echo $ACPI_OUT | grep -Po "([0-9]+\%)"
+echo BAT
+if [[ -z "$(echo $ACPI_OUT | grep Discharging)" ]];
+then
+	echo "#80B080"
+else
+	echo "#7070B0"
+fi
+	
