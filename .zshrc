@@ -24,10 +24,8 @@ alias vi='nvim'
 alias g='git'
 alias gg='git status'
 alias gh='git checkout'
-alias fls='source ~/envs/flask/bin/activate'
-alias nb='jupyter notebook'
 alias ml='cd ~/code/ml && source ~/envs/ml/bin/activate && jupyter notebook --no-browser'
-alias dotf='/usr/bin/git --git-dir="$HOME/dotfiles/.git" --work-tree="$HOME"'
+alias n2='source ~/envs/n2/bin/activate && cd code/n2'
 alias venv='python3 -m venv'
 alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -lF -a --sort name --git --header'
 alias ssh='TERM=xterm ssh'
@@ -46,9 +44,9 @@ git_info() {
   local AHEAD="%{$fg[red]%}⇡NUM"
   local BEHIND="%{$fg[cyan]%}⇣NUM"
   local MERGING="%{$fg[magenta]%}🗲"
-  local UNTRACKED="\x1b[38;5;245m●"
-  local MODIFIED="\x1b[38;5;196m●"
-  local STAGED="\x1b[38;5;107m●"
+  local UNTRACKED="%F{245}●%f"
+  local MODIFIED="%F{202}●%f"
+  local STAGED="%F{191}●%f"
 
   local -a DIVERGENCES
   local -a FLAGS
@@ -85,37 +83,30 @@ git_info() {
   [ -n "$GIT_STATUS" ] && GIT_INFO+=( "$GIT_STATUS" )
   [[ ${#DIVERGENCES[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)DIVERGENCES}" )
   [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
-  GIT_INFO+=( "\033[38;5;255m$GIT_LOCATION" )
+  GIT_INFO+=( "%F{255}$GIT_LOCATION%f" )
   GIT_INFO+=( '%{$reset_color%}' )
-  echo "\x1b[48;5;89m${(j: :)GIT_INFO}"
+  echo "%K{23}${(j: :)GIT_INFO}%k"
 
 }
 
-prompt_setup_umbra(){
+prompt_setup_goga(){
   ZSH_THEME_VIRTUALENV_PREFIX=" "
   ZSH_THEME_VIRTUALENV_SUFFIX=" "
 
-  base_prompt='%{$bg[yellow]$fg[black]%}$(virtualenv_prompt_info)%{$reset_color%}%{$bg[cyan]$fg[black]%} %0~ %{$reset_color%}'
+  base_prompt='%K{23}%F{7}$(virtualenv_prompt_info)%K{29}%F{0} %0~ %k%f'
 
   post_prompt=' '
-  #post_prompt='%{$fg[cyan]%}⇒%{$reset_color%} '
 
-  #base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
-  #post_prompt_nocolor=$(echo "$post_prompt" | perl -pe "s/%\{[^}]+\}//g")
-
-  precmd_functions+=(prompt_umbra_precmd)
+  precmd_functions+=(prompt_goga_precmd)
 }
 
-prompt_umbra_precmd(){
+prompt_goga_precmd(){
   local gitinfo=$(git_info)
-  #local gitinfo_nocolor=$(echo "$gitinfo" | perl -pe "s/%\{[^}]+\}//g")
-  #local exp_nocolor="$(print -P \"$base_prompt_nocolor$gitinfo_nocolor$post_prompt_nocolor\")"
-  #local prompt_length=${#exp_nocolor}
 
   PROMPT="$base_prompt$gitinfo$post_prompt"
 }
 
-prompt_setup_umbra
+prompt_setup_goga
 
 #printf "\x1b[36;1m`date +%H`\x1b[35;1m `date +%M`\x1b[0m"
 #printf " `nmcli -t -f active,ssid dev wifi | egrep '^yes' | head -1 | sed "s/yes://g"`\n"
