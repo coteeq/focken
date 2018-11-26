@@ -1,15 +1,11 @@
 #!/bin/python
-
 import os
 import json
 from bb import bspc, BAR_OUTPUT, BLOCK_BUTTON, SUBBLOCK
 
-def notify(s):
-    os.system('notify-send ' + str(s))
-
-colFocused = [53, 77, 88]
-colUnfocused = [36, 50, 54]
-colUrgent = [99, 38, 39]
+colFocused = '#AA4488'
+colUnfocused = '#243236'
+colUrgent = '#632627'
 
 
 if (BLOCK_BUTTON == "1" and SUBBLOCK != ""):
@@ -56,10 +52,10 @@ for opt in report.split(':')[1:]:
 
     block = {'text': workspace,
              'background': col,
-             'bgxpad': 8,
-             'bgrad': 5,
+             'bgxpad': 11,
+             'bgrad': 3,
              'bgypad': 2,
-             'margin': 4
+             'margin': 2
             }
 
     subblocks.append(block)

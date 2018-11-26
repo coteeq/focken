@@ -1,6 +1,6 @@
 {
     "background": "#132020ff",
-    "font": "Inconsolata 28",
+    "font": "Iosevka Nerd Font Light 24",
     "shortlabels": false,
     "height": 50,
     "position": "bottom",
@@ -11,7 +11,8 @@
             "mode": "subblocks",
             "exec": "~/.config/blockbar/workspaces",
             "nodiv": false,
-            "eachmon": true
+            "eachmon": true,
+            "paddingleft": 2
         }
     ],
     "right": [
@@ -26,7 +27,7 @@
             "exec": "~/.config/blockbar/time",
             "interval": 31000,
             "nodiv": true,
-            "paddingright": 80
+            "paddingright": 40
         },
         {
             "mode": "legacy",
@@ -39,19 +40,20 @@
             "mode": "legacy",
             "exec": "~/.config/blockbar/keyboard",
             "nodiv": true,
-            "paddingright": 80
+            "paddingright": 40
         },
         {
             "mode": "legacy",
             "exec": "~/.config/blockbar/vol",
             "nodiv": true,
-            "paddingright": 80
+            "paddingright": 40
         },
         {
             "mode": "legacy",
             "exec": "~/.config/blockbar/vpn",
             "nodiv": true,
-            "paddingright": 80
+            "interval": 60000,
+            "paddingright": 40
         }
         
     ]

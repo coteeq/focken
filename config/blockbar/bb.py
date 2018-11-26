@@ -11,3 +11,4 @@ def bspc(cmd):
     res = subprocess.run(['bspc'] + cmd.split(' '), stdout=subprocess.PIPE).stdout
     res = res.decode('utf-8')[:-1]
     return res
+

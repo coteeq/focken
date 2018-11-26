@@ -1,11 +1,19 @@
 #!/bin/sh
-vol=$(pacmd list-sinks | sed -n '/properties:/q;p')
 
-if [[ -z $(echo $vol | grep "muted: yes") ]]
+if pgrep pulseaudio > /dev/null;
 then
-    pacmd list-sinks | grep "volume: front-left: " | grep -Po "[0-9]+%"
-    echo '#808080'
+    vol=$(ponymix get-volume)
+    if ponymix is-muted;
+    then
+        printf "婢 %s\n" "$vol"
+        printf "婢 %s\n" "$vol"
+        echo '#606060'
+    else
+        printf "墳 %s\n" $vol
+        printf "墳 %s\n" $vol
+        echo '#ff66cc'
+    fi
 else
-    printf 'X\nX\n#808080'
+    printf "^v-----"
 fi
 

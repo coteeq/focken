@@ -1,12 +1,62 @@
 #!/bin/sh
+stat=$(acpi)
+perc=$(echo $stat | rg -o "([0-9]+)%" -r '$1')
 
-ACPI_OUT=$(acpi)
-echo $ACPI_OUT | grep -Po "([0-9]+\%)"
-echo BAT
-if [[ -z "$(echo $ACPI_OUT | grep Discharging)" ]];
+case $perc in
+    [0-9])
+        glyph=''
+        color='#FF8060'
+        ;;
+    1[0-9])
+        glyph=''
+        color='#C09060'
+        ;;
+    2[0-9])
+        glyph=''
+        color='#B0A060'
+        ;;
+    3[0-9])
+        glyph=''
+        color='#A0B060'
+        ;;
+    4[0-9])
+        glyph=''
+        color='#90C060'
+        ;;
+    5[0-9])
+        glyph=''
+        color='#80D060'
+        ;;
+    6[0-9])
+        glyph=''
+        color='#80E060'
+        ;;
+    7[0-9])
+        glyph=''
+        color='#80F060'
+        ;;
+    8[0-9])
+        glyph=''
+        color='#80FF60'
+        ;;
+    9[0-9])
+        glyph=''
+        color='#80FF60'
+        ;;
+    100)
+        glyph=''
+        color='#80FF60'
+        ;;
+esac
+
+
+if echo $stat | rg "Charging" > /dev/null;
 then
-	echo "#80B080"
-else
-	echo "#7070B0"
+    glyph=''
+    color='#8080B0';
 fi
-	
+
+printf "%s %s\n" $glyph $perc
+printf "%s %s\n" $glyph $perc
+printf "%s" $color
+
