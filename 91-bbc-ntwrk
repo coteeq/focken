@@ -1,0 +1,3 @@
+#!/bin/sh
+bbc exec $(bbc list | rg vpn | awk '{print $1}')
+

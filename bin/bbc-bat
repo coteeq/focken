@@ -1,0 +1,3 @@
+#!/bin/sh
+bbc exec $(bbc list | rg battery | awk '{print $1}')
+
