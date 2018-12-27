@@ -1,13 +1,5 @@
 export ZSH=/home/syn/.oh-my-zsh
-export PATH=$PATH:~/bin:~/.local/bin
-
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+export PATH=$PATH:~/bin
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -16,18 +8,27 @@ export PATH=$PATH:~/bin:~/.local/bin
 
 fpath=( "$HOME/.zfunctions" $fpath )
 
-plugins=(virtualenv zsh-syntax-highlighting git)
+plugins=(virtualenv zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-alias vi='nvim'
+# ============ GIT ALIAS =============
 alias g='git'
 alias gg='git status'
 alias gh='git checkout'
-alias ml='cd ~/code/ml && source ~/envs/ml/bin/activate && jupyter notebook --no-browser'
-alias n2='source ~/envs/n2/bin/activate && cd code/n2'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gr='git remote'
+alias gb='git branch'
+alias gc='git commit'
+alias ga='git add'
+alias gba='git branch --all -vvv'
+# ====================================
+
+alias vi='nvim'
 alias venv='python3 -m venv'
-alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -lF -a --sort name --git --header'
+alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git --header'
 alias ssh='TERM=xterm ssh'
 
 export EDITOR=/usr/bin/nvim
@@ -92,24 +93,15 @@ git_info() {
 prompt_setup_goga(){
   ZSH_THEME_VIRTUALENV_PREFIX=" "
   ZSH_THEME_VIRTUALENV_SUFFIX=" "
-
   base_prompt='%K{23}%F{7}$(virtualenv_prompt_info)%K{29}%F{0} %0~ %k%f'
-
   post_prompt=' '
-
   precmd_functions+=(prompt_goga_precmd)
 }
 
 prompt_goga_precmd(){
   local gitinfo=$(git_info)
-
   PROMPT="$base_prompt$gitinfo$post_prompt"
 }
 
 prompt_setup_goga
-
-#printf "\x1b[36;1m`date +%H`\x1b[35;1m `date +%M`\x1b[0m"
-#printf " `nmcli -t -f active,ssid dev wifi | egrep '^yes' | head -1 | sed "s/yes://g"`\n"
-#printf "\n"
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
