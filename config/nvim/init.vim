@@ -1,35 +1,36 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Required:
+set runtimepath+=/home/syn/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Required:
+if dein#load_state('/home/syn/.cache/dein')
+  call dein#begin('/home/syn/.cache/dein')
 
-""Plugin 'vim-airline/vim-airline'
-""Plugin 'vim-airline/vim-airline-themes'
-""Plugin 'jordwalke/flatlandia'
-Plugin 'scrooloose/nerdtree'
-""Plugin 'townk/vim-autoclose'
-Plugin 'itmammoth/doorboy.vim'
-Plugin 'rafi/awesome-vim-colorschemes'
-""Plugin 'flazz/vim-colorschemes'
-""Plugin 'KeitaNakamura/neodark.vim'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-""Plugin 'ajh17/Spacegray.vim'
-""Plugin 'joshdick/onedark.vim'
-Plugin 'dracula/vim'
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/syn/.cache/dein/repos/github.com/Shougo/dein.vim')
 
+  " Add or remove your plugins here like this:
+  call dein#add('itmammoth/doorboy.vim')
+  call dein#add('dracula/vim')
+  call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('Shougo/defx.nvim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/deoplete-clangx')
+  call dein#add('mcchrish/nnn.vim')
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+"End dein Scripts-------------------------
 
 set mouse=a
 set number
@@ -42,16 +43,10 @@ set numberwidth=4
 set expandtab
 set autoindent
 set smartindent
+set fdm=marker
 syntax on
 ""set noshowmode
-
-
-"set termguicolors
-color dracula
-"source /home/syn/.config/nvim/onedark.vim
-"color deep-space
-
-
 set laststatus=0
-let NERDTreeShowHidden = 1
+
+let g:deoplete#enable_at_startup = 1
 
