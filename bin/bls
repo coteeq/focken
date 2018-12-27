@@ -57,16 +57,16 @@ lock() {
 	letterEnteredColor=303030ff
 	letterRemovedColor=d23c3dff
 	passwordCorrect=00000030
-	passwordIncorrect=d29c3dff
+	passwordIncorrect=a22c2dff
 	background=00000000
 	foreground=80ffdfff
     ringforeground=3f9fa0ff
 	i3lock \
 		-t -i "$1" \
         --timepos="x+$TEXT_OFFSET_X:h-$TEXT_NEGATIVE_OFFSET_Y" \
-        --datepos="x+$(echo $TEXT_OFFSET_X + 84 | bc):h-$(echo $TEXT_NEGATIVE_OFFSET_Y - 30 | bc)" \
+        --datepos="x+$(echo $TEXT_OFFSET_X + 47 | bc):h-$(echo $TEXT_NEGATIVE_OFFSET_Y - 30 | bc)" \
 		--clock \
-        --datestr "U WOT M8?" --date-font=Inconsolata \
+        --datestr "WHAT'S THAT THEN?" --date-font=Inconsolata \
         --datesize=20 \
 		--insidecolor=$background --ringcolor=$ringforeground --line-uses-inside \
 		--keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
