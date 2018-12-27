@@ -8,7 +8,7 @@ super + Escape
     pkill -USR1 -x sxhkd
 
 super + z
-    /home/syn/bin/bls -l dim
+    /home/syn/bin/lock.sh
 
 super + space
     xkb-switch -n && bbc exec 5
