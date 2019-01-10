@@ -53,7 +53,7 @@ esac
 if echo $stat | rg "Charging" > /dev/null;
 then
     glyph=''
-    color='#8080B0';
+    color='#70D0B0';
 fi
 
 printf "%s %s\n" $glyph $perc

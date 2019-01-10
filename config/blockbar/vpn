@@ -5,15 +5,32 @@ function barf {
     printf $@
 }
 
-if [[ ! -z "$(ip link show | grep enp0)" ]]
+if [[ ! -z "$(ip link show | rg "enp0")" ]]
 then
-    if [[ ! -z "$(ip link show | grep POINTOPOINT)" ]]
+    if [[ ! -z "$(ip link show | rg POINTOPOINT)" ]]
     then
         barf '\n'
         printf '#30F098'
     else
         barf '\n'
         printf '#5080A0'
+    fi
+
+elif [[ ! -z "$(ip link show | rg "wlp1s0")"  ]]
+then
+    if [[ ! -z "$(nmcli device wifi | rg "^\*")" ]]
+    then
+        if [[ ! -z "$(ip link show | rg POINTOPOINT)"  ]]
+        then
+            barf '\n'
+            printf '#30F098'
+        else
+            barf '\n'
+            printf '#5080A0'
+        fi
+    else
+        barf '\n'
+        printf '#808080'
     fi
 else
     barf '\n'

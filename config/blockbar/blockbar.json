@@ -54,7 +54,13 @@
             "nodiv": true,
             "interval": 60000,
             "paddingright": 40
-        }
-        
+        },
+        {
+            "mode": "legacy",
+            "exec": "~/.config/blockbar/jupyter",
+            "nodiv": true,
+            "interval": 120000,
+            "paddingright": 40
+        } 
     ]
 }

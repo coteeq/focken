@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [[ ! -f '/tmp/juptmp' ]]; then
+    exit
+else
+    echo 
+    echo 
+    echo "#DD7700"
+fi
+
