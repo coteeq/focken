@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/syn/.config/awesome'
-let g:netrw_dirhist_2='/home/syn/.config/awesome/themes'
-let g:netrw_dirhist_3='/home/syn/.config/awesome/themes/blueres'
