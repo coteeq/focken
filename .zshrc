@@ -6,7 +6,7 @@ export PATH=$PATH:~/bin
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-fpath=( "$HOME/.zfunctions" $fpath )
+#fpath=( "$HOME/.zfunctions" $fpath )
 
 plugins=(virtualenv zsh-syntax-highlighting)
 
@@ -24,6 +24,8 @@ alias gb='git branch'
 alias gc='git commit'
 alias ga='git add'
 alias gba='git branch --all -vvv'
+alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gloga="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 # ====================================
 
 alias vi='nvim'
