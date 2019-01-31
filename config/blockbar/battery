@@ -9,43 +9,43 @@ case $perc in
         ;;
     1[0-9])
         glyph=''
-        color='#C09060'
+        color='#909060'
         ;;
     2[0-9])
         glyph=''
-        color='#B0A060'
+        color='#80A060'
         ;;
     3[0-9])
         glyph=''
-        color='#A0B060'
+        color='#70E070'
         ;;
     4[0-9])
         glyph=''
-        color='#90C060'
+        color='#70E080'
         ;;
     5[0-9])
         glyph=''
-        color='#80D060'
+        color='#70E080'
         ;;
     6[0-9])
         glyph=''
-        color='#80E060'
+        color='#70E0A0'
         ;;
     7[0-9])
         glyph=''
-        color='#80F060'
+        color='#70E0A0'
         ;;
     8[0-9])
         glyph=''
-        color='#80FF60'
+        color='#70E0A0'
         ;;
     9[0-9])
         glyph=''
-        color='#80FF60'
+        color='#70E0B0'
         ;;
     100)
         glyph=''
-        color='#80FF60'
+        color='#70E0B0'
         ;;
 esac
 

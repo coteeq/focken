@@ -3,7 +3,7 @@ import os
 import json
 from bb import bspc, BAR_OUTPUT, BLOCK_BUTTON, SUBBLOCK
 
-colFocused = '#AA4488'
+colFocused = '#B04080'
 colUnfocused = '#243236'
 colUrgent = '#632627'
 
