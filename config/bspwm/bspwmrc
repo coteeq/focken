@@ -21,14 +21,11 @@ bspc config gapless_monocle      true
 
 bspc config bottom_padding       50
 
-function workspace_loop {
-    bspc subscribe | while read line; do
-        ~/.config/blockbar/workspaces -- from bspwmrc;
-    done
-}
+pgrep mar0 || ~/.config/bspwm/mar0 --daemon &
+bbc property $(bbc list | rg mar0 | awk '{print $1}') module subblocks
+
 
 PACTL_EXACT_CALLS_NUMBER=2
-
 function pactl_loop {
     bbc exec $(bbc list | rg vol | awk '{print $1}')
 
@@ -43,7 +40,6 @@ function pactl_loop {
     done
 }
 
-workspace_loop &
 pactl_loop &
 
 bspc rule -a Gimp desktop='^6' state=floating follow=on

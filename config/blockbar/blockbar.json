@@ -9,10 +9,10 @@
     "left": [
         {
             "mode": "subblocks",
-            "exec": "~/.config/blockbar/workspaces",
+            "exec": "~/.config/bspwm/mar0",
             "nodiv": false,
             "eachmon": true,
-            "paddingleft": 2
+            "paddingleft": -2
         }
     ],
     "right": [
