@@ -88,7 +88,7 @@ git_info() {
   [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
   GIT_INFO+=( "%F{255}$GIT_LOCATION%f" )
   GIT_INFO+=( '%{$reset_color%}' )
-  echo "%K{23}${(j: :)GIT_INFO}%k"
+  echo "%K{8}${(j: :)GIT_INFO}%k"
 
 }
 
