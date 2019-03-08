@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #define BLK_BUF_SIZE 1024U
 #define WS_NAME_BUF_SIZE 32U
@@ -20,7 +21,7 @@ static char *colfocus = "#B04080",
 #define BGYPAD "2"
 #define MARGIN "2"
 
-FILE *rpopen (char *fmt, ...);
+int rpopen (char *fmt, ...);
 char *colondup (const char *s);
 size_t coloncpy (char *dst, const char *src, size_t size);
 void show_workspaces (const char *status, int print_to_stdout);
@@ -45,25 +46,32 @@ int main (int argc, char **argv) {
     p = popen ("bspc subscribe -c 1", "r");
     fgets (status, STATUS_BUF_SIZE, p);
     switch_workspace (status, btn, blk, bar_out_s);
-
-    /* reopen process, as i am too lazy
-     * to check if switch actually occured in switch_workspace
-     */
     pclose (p);
-    p = popen ("bspc subscribe -c 1", "r");
-    fgets (status, STATUS_BUF_SIZE, p);
-    show_workspaces (status, 1);
-    pclose (p);
+    /* daemon will redraw for us, if necessary */
     return 0;
 }
 
-FILE *rpopen (char *fmt, ...) {
+int rpopen (char *fmt, ...) {
     char buf[CMD_BUF_SIZE + 1];
     va_list vl;
     va_start (vl, fmt);
     vsnprintf (buf, CMD_BUF_SIZE, fmt, vl);
     va_end (vl);
-    return popen (buf, "r");
+    pid_t exec_pid = fork ();
+    if (exec_pid == -1)
+        abort ();
+    if (exec_pid == 0) {
+        char *args[4] = {"sh", "-c", buf, NULL};
+        execv ("/bin/sh", args);
+        abort ();
+    }
+    else {
+        int status = 0;
+        do {
+            waitpid (exec_pid, &status, 0);
+        } while (!WIFEXITED (status));
+    }
+    return 0;
 }
 
 char *colondup (const char *s) {
@@ -178,5 +186,7 @@ void start_as_daemon () {
     while (fgets (status, STATUS_BUF_SIZE, subscribe)) {
         show_workspaces (status, 0);
     }
+    pclose (subscribe);
+    exit (EXIT_FAILURE);
 }
 
