@@ -17,17 +17,18 @@ onecol() {
     printf "\t\t%10s\n" " "
 }
 
-if [[ "$#" -le "1" ]]
-then
-    cols && exit
-fi
-
 case $1 in
     "-16")
-        m=16;;
+        m=16
+        cols
+        ;;
     "-256")
-        m=256;;
+        m=256
+        cols
+        ;;
+    "")
+        cols;;
     *)
-        onecol $1 && exit;;
+        onecol $1;;
 esac
-cols
+
