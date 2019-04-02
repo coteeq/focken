@@ -10,7 +10,6 @@ if dein#load_state('/home/syn/.cache/dein')
   call dein#add('/home/syn/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   call dein#add('itmammoth/doorboy.vim')
-  call dein#add('dracula/vim')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('Shougo/defx.nvim')
   call dein#add('Shougo/deoplete.nvim')
@@ -47,12 +46,29 @@ let g:deoplete#enable_at_startup = 0
 
 hi TabLine      ctermbg=0     ctermfg=White  cterm=NONE
 hi TabLineFill  ctermbg=0     ctermfg=White  cterm=NONE
-hi TabLineSel   ctermbg=8    ctermfg=White  cterm=NONE
+hi TabLineSel   ctermbg=8     ctermfg=White  cterm=NONE
 hi Folded       ctermbg=Black
+hi ErrorMsg     ctermbg=88   ctermfg=7
+
+" Output the current syntax group
+nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 "dont reset selection on indent
 vnoremap > >gv
 vnoremap < <gv
+
+let mapleader=','
+noremap <silent> <leader><space> :noh<CR>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
+autocmd FileType c setlocal ts=4 sw=4 expandtab
+autocmd FileType cpp setlocal ts=4 sw=4 expandtab
+autocmd FileType html setlocal ts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=2 sw=2 expandtab
+
 
 " defx keys
 "{{{
