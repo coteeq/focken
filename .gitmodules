@@ -4,3 +4,6 @@
 [submodule "config/awesome/vicious"]
 	path = config/awesome/vicious
 	url = git@github.com:vicious-widgets/vicious.git
+[submodule "bar"]
+	path = bar
+	url = /bar

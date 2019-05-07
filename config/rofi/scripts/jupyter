@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd $HOME/src/ml
+source $HOME/src/ml/e/bin/activate
+jupyter notebook --NotebookApp.token='' --no-browser
+

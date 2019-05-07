@@ -33,6 +33,8 @@ alias v='nvim'
 alias venv='python3 -m venv'
 alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git --header'
 alias ssh='TERM=xterm ssh'
+alias dcoker='docker' # I really have no fucking idea, why I misspell it like this
+alias valg='valgrind --leak-check=full --track-origins=yes -v'
 function prg {
     ps aux | rg $1
 }

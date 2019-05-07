@@ -1,0 +1,76 @@
+#!/bin/bash
+
+ID_FILE=/tmp/dunst-info-id
+
+function colorify () {
+    col=$1
+    shift
+    echo -ne "<span color=\"$col\">$@</span>"
+}
+
+
+function batt () {
+    stat=$(acpi)
+    perc=$(echo $stat | rg -o "([0-9]+)%" -r '$1')
+
+    case $perc in
+        [0-9]) glyph=''; color='#FF8060';;
+        1[0-9]) glyph=''; color='#909060';;
+        2[0-9]) glyph=''; color='#80A060';;
+        3[0-9]) glyph=''; color='#70E070';;
+        4[0-9]) glyph=''; color='#70E080';;
+        5[0-9]) glyph=''; color='#70E080';;
+        6[0-9]) glyph=''; color='#70E0A0';;
+        7[0-9]) glyph=''; color='#70E0A0';;
+        8[0-9]) glyph=''; color='#70E0A0';;
+        9[0-9]) glyph=''; color='#70E0B0';;
+        100)    glyph=''; color='#70E0B0';;
+    esac
+
+    if echo $stat | rg "Charging" > /dev/null;
+    then
+        glyph=''
+        color='#70D0B0';
+    fi
+
+    colorify $color "$glyph  $perc"
+}
+
+function my_date () {
+    colorify '#A0A0C0' $(date '+%Y-%m-%d')
+    printf '  '
+    colorify '#C080D0' $(date '+%H:%M')
+}
+
+function my_vol () {
+    if pgrep pulseaudio > /dev/null;
+    then
+        vol=$(ponymix get-volume)
+        if ponymix is-muted;
+        then
+            body=$(printf "婢 %s\n" $vol)
+            color='#606060'
+        else
+            body=$(printf "墳 %s\n" $vol)
+            color='#ff66cc'
+        fi
+
+        colorify $color $body
+    else
+        printf "vol dead"
+    fi
+}
+
+function my_dunstify () {
+    dunstify $(uname -n) "$(batt)    $(my_date)  $(my_vol)" -u 0 --appname=dinfo -p > $ID_FILE
+}
+
+case $1 in
+    'toggle')
+        test -f $ID_FILE && (dunstify -C $(cat $ID_FILE) && rm $ID_FILE) || my_dunstify
+        ;;
+    '*')
+        exit
+        ;;
+esac
+
