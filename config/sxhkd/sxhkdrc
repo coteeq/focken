@@ -1,8 +1,11 @@
 super + Return
     kitty
 
-ctrl + space
+super + d
     rofi -show drun
+    
+ctrl + space
+    bin/dunst_info toggle
 
 super + Escape
     pkill -USR1 -x sxhkd
@@ -24,6 +27,9 @@ XF86AudioMute
 
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
     xbacklight {-inc,-dec} 7
+
+ctrl + Escape
+    /home/syn/bin/dunst_info
 
 #
 # bspwm hotkeys
