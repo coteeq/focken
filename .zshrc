@@ -1,17 +1,13 @@
 export ZSH=/home/syn/.oh-my-zsh
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 #fpath=( "$HOME/.zfunctions" $fpath )
 
 plugins=(virtualenv zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# ============ GIT ALIAS =============
+# alias {{{
+# ============ GIT =============
 alias g='git'
 alias gg='git status'
 alias gh='git checkout'
@@ -25,9 +21,8 @@ alias ga='git add'
 alias gba='git branch --all -vvv'
 alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gloga="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-# ====================================
+# ==============================
 
-#alias vi='nvim'
 alias v='nvim'
 alias venv='python3 -m venv'
 alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git --header'
@@ -37,10 +32,12 @@ alias valg='valgrind --leak-check=full --track-origins=yes -v'
 function prg {
     ps aux | rg $1
 }
+# }}}
 
 export EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/chromium
 
+# prompt {{{
 # git_info is stolen, but I dont remember from where
 git_info() {
   # Exit if not inside a Git repository
@@ -124,4 +121,6 @@ prompt_goga_precmd(){
 }
 
 prompt_setup_goga
+
+# }}}
 
