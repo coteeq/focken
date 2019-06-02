@@ -32,6 +32,7 @@ alias valg='valgrind --leak-check=full --track-origins=yes -v'
 function prg {
     ps aux | rg $1
 }
+alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
 
 export EDITOR=/usr/bin/nvim
