@@ -108,10 +108,17 @@ prompt_goga_precmd(){
   local pro=''
   local symbol1=''
   local symbol2=''
+
+    if [ -z ${GOGA_HIDE_PATH+x} ]; then
+      local show_path=' %0~ '
+    else
+      local show_path=''
+    fi
+
   if [ "$venv" ]; then
-    pro="%K{23}%F{7}$venv%K{8}%F{23}$symbol1%F{7} %0~ "
+    pro="%K{23}%F{7}$venv%K{8}%F{23}$symbol1%F{7}$show_path"
   else
-    pro="%K{8}%F{7} %0~ "
+    pro="%K{8}%F{7}$show_path"
   fi
   if [ "$gitinfo" ]; then
     pro="${pro}%F{7}%K{8}$symbol2 $gitinfo%F{8}%k$symbol1%f"
@@ -119,6 +126,13 @@ prompt_goga_precmd(){
     pro="${pro}%F{8}%k$symbol1%f%k"
   fi
   PROMPT="$pro$post_prompt"
+}
+
+function goga_hide(){
+    export GOGA_HIDE_PATH
+}
+function goga_show(){
+    unset GOGA_HIDE_PATH
 }
 
 prompt_setup_goga
