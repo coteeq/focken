@@ -1,0 +1,10 @@
+#!/bin/bash
+id=$(xdo id -n kitty-dd)
+
+if [ "$id" != "" ]
+then
+    bspc node "$id" --flag hidden -f
+else
+    kitty --name kitty-dd -d "$HOME" &
+fi
+
