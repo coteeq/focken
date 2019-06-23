@@ -35,7 +35,7 @@ end
 beautiful.init(awful.util.getdir("config") .. "/themes/blueres/theme.lua")
 
 
-terminal = "termite --config ~/.config/termite/config"
+terminal = "kitty"
 editor = "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -193,7 +193,7 @@ awful.screen.connect_for_each_screen(function(s)
         end
     }
 
-    local cal = lain.widget.calendar({
+    local cal = lain.widget.cal({
         icons = "",
         attach_to = { mytextclock },
         notification_preset = {
