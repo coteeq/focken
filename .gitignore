@@ -1,2 +1,6 @@
 *.pyc
+config/nvim/.netrwhist
+# execs
+bin/bar
+bin/ev
 
