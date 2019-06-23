@@ -7,7 +7,7 @@
 # find your resolution so images can be resized to match your screen resolution
 res=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
 
-TEXT_OFFSET_X=60
+TEXT_OFFSET_X=58
 TEXT_NEGATIVE_OFFSET_Y=100
 
 init_filenames() {
@@ -54,10 +54,10 @@ prelock() {
 
 lock() {
 	#$1 image path
-	letterEnteredColor=303030ff
-	letterRemovedColor=d23c3dff
+	letterEnteredColor=202020ff
+	letterRemovedColor=823c3dff
 	passwordCorrect=00000030
-	passwordIncorrect=a22c2dff
+	passwordIncorrect=822c2dff
 	background=00000000
 	foreground=80ffdfff
     ringforeground=3f9fa0ff
