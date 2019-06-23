@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case $1 in
+    start)
+        systemctl start docker
+        ;;
+    down)
+        docker rm $(docker ps -a -q) -f
+        docker volume prune -f
+        ;;
+    stop)
+        systemctl stop docker
+        ;;
+    *)
+        exit
+        ;;
+esac
+
