@@ -1,6 +1,6 @@
 {
     "background": "#132020ff",
-    "font": "Iosevka Nerd Font Light 24",
+    "font": "Iosevka Burnt 24",
     "shortlabels": false,
     "height": 50,
     "position": "bottom",
@@ -8,8 +8,8 @@
     "traydiv": false,
     "left": [
         {
-            "mode": "subblocks",
-            "exec": "~/.config/bspwm/mar0",
+            "module": "subblocks",
+            "exec": "~/.config/bspwm/ws",
             "nodiv": false,
             "eachmon": true,
             "paddingleft": -2
@@ -18,27 +18,27 @@
     "right": [
         {
             "mode": "legacy",
-            "exec": "~/.config/blockbar/battery",
-            "interval": 120000,
+            "exec": "~/.config/blockbar/bat",
+            "interval": 60000,
             "paddingright": 20
         },
         {
             "mode": "legacy",
-            "exec": "~/.config/blockbar/time",
+            "exec": "~/.config/blockbar/tim",
             "interval": 31000,
             "nodiv": true,
             "paddingright": 40
         },
         {
             "mode": "legacy",
-            "exec": "~/.config/blockbar/date",
+            "exec": "~/.config/blockbar/dat",
             "interval": 31000,
             "nodiv": true,
             "paddingright": 20
         },
         {
             "mode": "legacy",
-            "exec": "~/.config/blockbar/keyboard",
+            "exec": "~/.config/blockbar/kbd",
             "nodiv": true,
             "paddingright": 40
         },
@@ -54,13 +54,6 @@
             "nodiv": true,
             "interval": 60000,
             "paddingright": 40
-        },
-        {
-            "mode": "legacy",
-            "exec": "~/.config/blockbar/jupyter",
-            "nodiv": true,
-            "interval": 120000,
-            "paddingright": 40
-        } 
+        }
     ]
 }
