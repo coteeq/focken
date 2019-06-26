@@ -64,9 +64,9 @@ lock() {
 	i3lock \
 		-t -i "$1" \
         --timepos="x+$TEXT_OFFSET_X:h-$TEXT_NEGATIVE_OFFSET_Y" \
-        --datepos="x+$(echo $TEXT_OFFSET_X + 47 | bc):h-$(echo $TEXT_NEGATIVE_OFFSET_Y - 30 | bc)" \
+        --datepos="x+187:h-$(echo $TEXT_NEGATIVE_OFFSET_Y - 30 | bc)" \
 		--clock \
-        --datestr "WHAT'S THAT THEN?" --date-font=Inconsolata \
+        --datestr "WE WERE EXPLODING ANYWAY" --date-font=Inconsolata \
         --datesize=20 \
 		--insidecolor=$background --ringcolor=$ringforeground --line-uses-inside \
 		--keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
@@ -76,7 +76,7 @@ lock() {
 		--radius=40 --ring-width=4 --veriftext="" --wrongtext="" \
 		--verifcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground" \
 		--noinputtext="" --force-clock $lockargs \
-        --timesize=64 --time-font=Inconsolata --time-align=1 --date-align=1 \
+        --timesize=64 --time-font=Inconsolata --time-align=1 --date-align=0 \
         --indicator
 }
 
