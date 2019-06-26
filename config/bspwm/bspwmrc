@@ -8,7 +8,7 @@ setxkbmap -layout us,ru
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
-pgrep blockbar || blockbar ~/.config/blockbar/blockbar.json &
+pgrep blockbar || blockbar ~/.config/blockbar/blb &
 
 xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n blockbar)
 
@@ -21,22 +21,11 @@ bspc config gapless_monocle      true
 
 bspc config bottom_padding       50
 
-pgrep mar0 || ~/.config/bspwm/mar0 --daemon &
-bbc property $(bbc list | rg mar0 | awk '{print $1}') module subblocks
+pgrep ws || ~/.config/bspwm/ws --daemon &
 
-
-PACTL_EXACT_CALLS_NUMBER=2
 function pactl_loop {
-    bbc exec $(bbc list | rg vol | awk '{print $1}')
-
-    self_last_client=''
-    pactl subscribe | while read line; do
-        current_client=$(echo $line | rg -o "client #([0-9]+)" -r '$1')
-        if [[ "$self_last_client" -lt "$current_client" ]]
-        then
-            self_last_client=$(expr $current_client + $PACTL_EXACT_CALLS_NUMBER);
-            bbc exec $(bbc list | rg vol | awk '{print $1}');
-        fi
+    ~/.config/bspwm/pulsen | while read line; do
+        bbc-ping-by-name vol;
     done
 }
 
@@ -44,4 +33,4 @@ pactl_loop &
 
 bspc rule -a Gimp desktop='^6' state=floating follow=on
 bspc rule -a Chromium desktop='^1' follow=on
-bspc rule -a TelegramDesktop desktop='^4'
+#bspc rule -a TelegramDesktop desktop='^4'

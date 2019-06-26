@@ -1,3 +1,4 @@
+#define _DEFAULT_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -5,26 +6,31 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <assert.h>
 
-#define BLK_BUF_SIZE 1024U
-#define WS_NAME_BUF_SIZE 32U
+#define BLOCK_BUF_SIZE 1024U
+#define VALUE_BUF_SIZE 32U
 #define CMD_BUF_SIZE 8192U
-#define JSON_BUF_SIZE CMD_BUF_SIZE
+#define OUTPUT_BUF_SIZE CMD_BUF_SIZE
 #define STATUS_BUF_SIZE 1024U
 
-static char *colfocus = "#B04080",
-            *colunfocus = "#243236",
-            *colurgent = "#632627";
+static const char *COLFOCUS   = "#B04080";
+static const char *COLUNFOCUS = "#243236";
+static const char *COLURGENT  = "#632627";
+static const char *COLLAYOUT  = "#008080";
+static const char *COLSTATE   = "#008080";
+
 
 #define BGXPAD "11"
 #define BGRAD "3"
 #define BGYPAD "2"
 #define MARGIN "2"
 
+
 int rpopen (char *fmt, ...);
 char *colondup (const char *s);
 size_t coloncpy (char *dst, const char *src, size_t size);
-void show_workspaces (const char *status, int print_to_stdout);
+void show_workspaces (const char *status);
 void switch_workspace (const char *status, int btn, int blk, const char *out);
 void start_as_daemon (void);
 
@@ -58,18 +64,17 @@ int rpopen (char *fmt, ...) {
     vsnprintf (buf, CMD_BUF_SIZE, fmt, vl);
     va_end (vl);
     pid_t exec_pid = fork ();
-    if (exec_pid == -1)
-        abort ();
-    if (exec_pid == 0) {
-        char *args[4] = {"sh", "-c", buf, NULL};
-        execv ("/bin/sh", args);
-        abort ();
-    }
-    else {
-        int status = 0;
-        do {
-            waitpid (exec_pid, &status, 0);
-        } while (!WIFEXITED (status));
+    int status = 0;
+    switch (exec_pid) {
+        case -1:
+            abort ();
+        case 0:
+            execlp ("/bin/sh", "/bin/sh", "-c", buf, (char *)NULL);
+            abort ();
+        default:
+            do {
+                waitpid (exec_pid, &status, 0);
+            } while (!WIFEXITED (status));
     }
     return 0;
 }
@@ -123,68 +128,82 @@ void switch_workspace (const char *status, int btn, int blk, const char *bar_out
 }
 #undef CHAR_IN
 
-void show_workspaces (const char *status, int print_to_stdout) {
-    char *disp_name = colondup (status + 2);
+void show_workspaces (const char *status) {
+    const char *display_name = status + 2;
     status = strchr (status, ':');
-    if (!status) return;
-    status++;
+    int display_name_len = status - display_name;
 
-    char jsonbuf[JSON_BUF_SIZE] = { 0 };
-    char blkbuf[BLK_BUF_SIZE]  = { 0 };
-    int first = 1;
-    while (status && status[0]) {
-        char *col = colunfocus;
-        char ws_name[WS_NAME_BUF_SIZE] = { 0 };
+    char result[OUTPUT_BUF_SIZE] = { 0 };
+    char layout_buf[BLOCK_BUF_SIZE] = { 0 };
+    char block[BLOCK_BUF_SIZE] = { 0 };
 
-        switch (status[0]) {
+    static const char *template =
+            "%s{\"text\": \"%.*s\", "
+            "\"background\": \"%s\","
+            "\"bgxpad\": " BGXPAD ","
+            "\"bgrad\": " BGRAD ","
+            "\"bgypad\": " BGYPAD ","
+            "\"margin\": " MARGIN "}";
+
+
+    while (status) {
+        const char *color = COLUNFOCUS;
+        switch (*++status) {
             case 'o':
-                col = colunfocus; break;
+                color = COLUNFOCUS; break;
             case 'O':
             case 'F':
             case 'U':
-                col = colfocus; break;
+                color = COLFOCUS; break;
             case 'u':
-                col = colurgent; break;
+                color = COLURGENT; break;
+            case 'L':
+                color = COLLAYOUT; break;
             case ':':
-                break;
+                continue;
+            case 'f':
+            case 'T':
+                status = strchr (status, ':');
+                continue;
             default:
-                goto cont;
-                break;
+                status = NULL; /* Hack to exit loop */
+                continue;
         }
+    
+        char *next_colon = strchr (status, ':');
+        int value_len = next_colon ?
+                (int)(next_colon - status) :
+                (int)strlen (status);
 
-        coloncpy (ws_name, status + 1, WS_NAME_BUF_SIZE);
+        if (status[value_len - 1] == '\n')/* Reached end of report */
+            value_len--;
 
-        static const char *fmt = 
-                "%s{\"text\": \"%s\", "
-                "\"background\": \"%s\","
-                "\"bgxpad\": " BGXPAD ","
-                "\"bgrad\": " BGRAD ","
-                "\"bgypad\": " BGYPAD ","
-                "\"margin\": " MARGIN
-                "}";
- 
-        snprintf (blkbuf, BLK_BUF_SIZE, fmt, first ? "" : ",", ws_name, col);
+        snprintf (block, BLOCK_BUF_SIZE, template,
+                  ",",
+                  value_len - 1,
+                  status + 1,
+                  color);
 
-        strcat (jsonbuf, blkbuf);
-        first = 0;
-cont:
+        if (*status == 'L')
+            strcpy (layout_buf, block + 1); /* Dont include leading comma */
+        else
+            strcat (result, block);
         status = strchr (status, ':');
-        if (status) status++;
     }
 
-    if (print_to_stdout)
-        printf ("{\"subblocks\": [%s]}", jsonbuf), fflush (stdout);
-    else
-        rpopen ("bbc property 1:%s execdata '{\"subblocks\": [%s]}'", disp_name, jsonbuf);
-
-    free (disp_name);
+    
+    rpopen ("bbc property 1:%.*s execdata '{\"subblocks\": [%s%s]}'",
+            display_name_len, display_name,
+            layout_buf,
+            result);
 }
 
 void start_as_daemon () {
+    //assert (daemon (0, 0) == 0);
     FILE *subscribe = popen ("bspc subscribe", "r");
     char status[STATUS_BUF_SIZE] = { 0 };
     while (fgets (status, STATUS_BUF_SIZE, subscribe)) {
-        show_workspaces (status, 0);
+        show_workspaces (status);
     }
     pclose (subscribe);
     exit (EXIT_FAILURE);
