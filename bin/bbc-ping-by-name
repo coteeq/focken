@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ "1" -gt "$#" ]
+then
+    exit;
+fi
+bbc exec $(bbc list | rg $1 | rg -Po '^([0-9]+)')
+
