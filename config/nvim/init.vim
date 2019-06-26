@@ -39,8 +39,6 @@ set smartindent
 set fdm=marker
 syntax on
 set laststatus=0
-set modelines=0
-set nomodeline
 
 set splitbelow
 set splitright
