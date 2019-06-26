@@ -17,7 +17,7 @@ super + z
     /home/syn/bin/lock.sh
 
 super + space
-    xkb-switch -n
+    xkb-switch -n && bbc-ping-by-name kbd
 
 ctrl + @Print
     flameshot gui
