@@ -1,0 +1,36 @@
+#!/bin/bash
+
+ROFI_MODI=${ROFI_MODI:-drun}
+VOL_STEP=${VOL_STEP:-10}
+LIGHT_STEP=${LIGHT_STEP:-7}
+
+_rofi()       { rofi -show "$ROFI_MODI"; }
+
+_vol_up()     { pactl set-sink-volume 0 "+$VOL_STEP%"; }
+_vol_down()   { pactl set-sink-volume 0 "-$VOL_STEP%"; }
+_vol_mute()   { pactl set-sink-mute 0 toggle; }
+
+_screenshot() { flameshot gui; }
+
+_term()       { kitty; }
+
+_status()     { dunst_info toggle; }
+
+_kbd_switch() { xkb-switch -n && echo "REL_KBD" > $PANEL_FIFO; }
+
+_lock()       { xkb-switch -s us; bls -l; }
+
+_bri_up()     { xbacklight -inc $LIGHT_STEP; }
+_bri_down()   { xbacklight -dec $LIGHT_STEP; }
+
+_snd_next ()  { playerctl next; }
+_snd_prev ()  { playerctl previous; }
+_snd_stop ()  { playerctl play-pause; }
+
+
+if [ -z "$1" ]; then
+    exit 1
+else
+    _$1
+fi
+
