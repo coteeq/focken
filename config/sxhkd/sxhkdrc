@@ -14,7 +14,7 @@ super + Escape
     pkill -USR1 -x sxhkd
 
 super + z
-    /home/syn/bin/lock.sh
+    /home/syn/bin/katyactl lock
 
 super + space
     xkb-switch -n && bbc-ping-by-name kbd
