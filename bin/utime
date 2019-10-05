@@ -1,0 +1,2 @@
+#!/bin/bash
+ts=$(date +%s%N) ; $@ ; tt=$((($(date +%s%N) - $ts)/1000)) ; printf "\x1b[33m$tt usec\x1b[0m\n"
