@@ -258,7 +258,7 @@
     # Xev might be helpful to find names for keys.
 
     # Close notification.
-    close = ctrl+space
+    close =
 
     # Close all notifications.
     close_all = ctrl+shift+space
@@ -267,7 +267,7 @@
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    history = ctrl+grave
+    history =
 
    # Context menu.
     context = ctrl+shift+period
