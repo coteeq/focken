@@ -2,7 +2,7 @@ export ZSH=/home/syn/.oh-my-zsh
 
 #fpath=( "$HOME/.zfunctions" $fpath )
 
-plugins=(virtualenv zsh-syntax-highlighting)
+plugins=(virtualenv zsh-syntax-highlighting docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -25,13 +25,16 @@ alias gloga="git log --graph --abbrev-commit --decorate --format=format:'%C(bold
 
 alias v='nvim'
 alias venv='python3 -m venv'
-alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git --header'
+alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git'
 alias ssh='TERM=xterm ssh'
 alias dcoker='docker' # I really have no fucking idea, why I misspell it like this
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
 alias py='python'
 function prg {
     ps aux | rg $1
+}
+function vkill {
+    kill $(ps aux | fzf -m | awk '{print $2}')
 }
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
@@ -50,7 +53,6 @@ git_info() {
 
   local AHEAD="%F{71}⇡NUM%f"
   local BEHIND="%F{6}⇣NUM%f"
-  local MERGING="%F{5}🗲%f"
   local UNTRACKED="%F{245}●%f"
   local MODIFIED="%F{202}●%f"
   local STAGED="%F{191}●%f"
@@ -66,11 +68,6 @@ git_info() {
   local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_BEHIND" -gt 0 ]; then
     DIVERGENCES+=( "${BEHIND//NUM/$NUM_BEHIND}" )
-  fi
-
-  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
-  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-    FLAGS+=( "$MERGING" )
   fi
 
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
@@ -95,32 +92,14 @@ git_info() {
   echo "${(j: :)GIT_INFO}"
 }
 
-prompt_setup_goga(){
-  ZSH_THEME_VIRTUALENV_PREFIX=" "
-  ZSH_THEME_VIRTUALENV_SUFFIX=" "
-  #base_prompt='%K{23}%F{7}$(virtualenv_prompt_info)%K{8}%F{7} %0~ %k%f'
-  post_prompt=' '
-  precmd_functions+=(prompt_goga_precmd)
-}
-
 prompt_goga_precmd(){
   local gitinfo=$(git_info)
   local venv="$(virtualenv_prompt_info)"
   local pro=''
-  local symbol1=''
-  local symbol2=''
+  local symbol1=''
+  local symbol2=''
 
-    if [ -z ${GOGA_HIDE_PATH+x} ]; then
-      local show_path=' %0~ '
-    else
-      local show_path=''
-    fi
-
-  if [ "$venv" ]; then
-    pro="%K{23}%F{7}$venv%K{8}%F{23}$symbol1%F{7}$show_path"
-  else
-    pro="%K{8}%F{7}$show_path"
-  fi
+  local pro="%K{8}%F{7} %0~ "
   if [ "$gitinfo" ]; then
     pro="${pro}%F{7}%K{8}$symbol2 $gitinfo%F{8}%k$symbol1%f"
   else
@@ -129,14 +108,11 @@ prompt_goga_precmd(){
   PROMPT="$pro$post_prompt"
 }
 
-function goga_hide(){
-    export GOGA_HIDE_PATH
-}
-function goga_show(){
-    unset GOGA_HIDE_PATH
-}
+ZSH_THEME_VIRTUALENV_PREFIX=" "
+ZSH_THEME_VIRTUALENV_SUFFIX=" "
+post_prompt=' '
+precmd_functions+=(prompt_goga_precmd)
 
-prompt_setup_goga
 
 # }}}
 
