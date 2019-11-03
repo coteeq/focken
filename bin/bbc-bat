@@ -1,3 +1,4 @@
 #!/bin/sh
-bbc exec $(bbc list | rg bat | awk '{print $1}')
+#bbc exec $(bbc list | rg bat | awk '{print $1}')
+su -c 'echo REL_BAT > /tmp/panel-fifo' syn
 
