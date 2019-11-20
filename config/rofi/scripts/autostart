@@ -1,5 +1,6 @@
 #!/bin/bash
 
 rm -rf $PANEL_FIFO
-bls -w
-sh ~/.config/openbox/lbar.sh &
+~/bin/bls -w
+pgrep -f lbar.sh || ~/.config/openbox/lbar.sh &
+
