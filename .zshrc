@@ -1,7 +1,5 @@
 export ZSH=/home/syn/.oh-my-zsh
 
-#fpath=( "$HOME/.zfunctions" $fpath )
-
 plugins=(virtualenv zsh-syntax-highlighting docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
