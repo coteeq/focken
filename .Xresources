@@ -1,5 +1,5 @@
 Xft.dpi: 160
-Xcursor.size: 24
+Xcursor.size: 32
 
 *.cursorColor:  #000000
 *background:    #5d729f
