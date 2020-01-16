@@ -44,6 +44,7 @@ function vkill {
 }
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
+source $HOME/focken/forgit.zsh
 
 export EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/chromium
