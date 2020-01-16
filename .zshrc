@@ -28,11 +28,17 @@ alias ssh='TERM=xterm ssh'
 alias dcoker='docker' # I really have no fucking idea, why I misspell it like this
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
 alias py='python'
+function get_ps {
+    ps -eo 'user,pid,ppid,pcpu,pmem,vsz,stat,bsdtime,args' --sort pid
+}
 function prg {
-    ps aux | rg $1
+    [[ "1" -gt "$#" ]] && return;
+    get_ps | rg "$@"
 }
 function vkill {
-    kill $(ps aux | fzf -m | awk '{print $2}')
+    pids="$(get_ps | fzf -m | awk '{print $2}')"
+    [[ -n "$pids" ]] && kill $(echo "$pids" | tr '\n' ' ') && return
+    echo "no procs"
 }
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
