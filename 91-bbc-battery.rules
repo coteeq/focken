@@ -1,3 +1,0 @@
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/home/syn/bin/bbc-bat"
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/home/syn/bin/bbc-bat"
-
