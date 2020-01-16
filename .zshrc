@@ -2,6 +2,8 @@ export ZSH=/home/syn/.oh-my-zsh
 
 plugins=(virtualenv zsh-syntax-highlighting docker docker-compose)
 
+WORDCHARS=${WORDCHARS//\/[&.;]}
+
 source $ZSH/oh-my-zsh.sh
 
 # alias {{{
