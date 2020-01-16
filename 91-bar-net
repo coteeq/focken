@@ -1,0 +1,3 @@
+#!/bin/sh
+su -c 'echo REL_VPN > /tmp/panel-fifo' syn
+

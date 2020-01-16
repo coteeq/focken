@@ -31,15 +31,20 @@ work(){
 
 make_vpn(){
     vpn='tun '
-    col='#404040'
-    icon=''
 
-    if [[ ! -z "$(ip link show | rg 'wg0: .*<POINTOPOINT')" ]]
+    if ip link show enp0s20u1 > /dev/null 2>&1 || ip link show enp0s20u2 > /dev/null 2>&1;
     then
-        icon='﫵'
-        col='#dd6060'
+        if ip link show wg0 > /dev/null 2>&1;
+        then
+            icon='﫵'
+            col='#aa3030'
+        else
+            icon=''
+            col='#aa3030'
+        fi
     else
-        col='#aa3030'
+        icon='ﱗ'
+        col='#4c1c4f'
     fi
 
     echo "%{F$col}$icon%{F-}"
