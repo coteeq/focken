@@ -1,4 +1,4 @@
-export ZSH=/home/syn/.oh-my-zsh
+export ZSH=/Users/syn/.oh-my-zsh
 
 plugins=(virtualenv zsh-syntax-highlighting docker docker-compose)
 
@@ -29,9 +29,9 @@ alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git'
 alias ssh='TERM=xterm ssh'
 alias dcoker='docker' # I really have no fucking idea, why I misspell it like this
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
-alias py='python'
+alias py='python3'
 function get_ps {
-    ps -eo 'user,pid,ppid,pcpu,pmem,vsz,stat,bsdtime,args' --sort pid
+    ps -eo 'user,pid,ppid,pcpu,pmem,vsz,stat,time,args'
 }
 function prg {
     [[ "1" -gt "$#" ]] && return;
@@ -44,16 +44,16 @@ function vkill {
 }
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
-source $HOME/focken/forgit.zsh
+source $HOME/src/focken/forgit.zsh
 
-export EDITOR=/usr/bin/nvim
+export EDITOR=nvim
 export BROWSER=/usr/bin/chromium
 
 source $HOME/.geometry.d/geometry.zsh
 GEOMETRY_INFO=()
 GEOMETRY_PROMPT=(geometry_echo geometry_status geometry_path)
-GEOMETRY_STATUS_SYMBOL=喝
-GEOMETRY_STATUS_SYMBOL_ERROR=喝
+GEOMETRY_STATUS_SYMBOL=▲
+GEOMETRY_STATUS_SYMBOL_ERROR=▲
 GEOMETRY_STATUS_COLOR=3
 
 # colored man {{{
