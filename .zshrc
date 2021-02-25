@@ -25,7 +25,8 @@ alias gloga="git log --graph --abbrev-commit --decorate --format=format:'%C(bold
 
 alias v='nvim'
 alias venv='python3 -m venv'
-alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git'
+alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name'
+alias lg='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name --git'
 alias ssh='TERM=xterm ssh'
 alias dcoker='docker' # I really have no fucking idea, why I misspell it like this
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
@@ -42,6 +43,7 @@ function vkill {
     [[ -n "$pids" ]] && kill $(echo "$pids" | tr '\n' ' ') && return
     echo "no procs"
 }
+alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
 source $HOME/src/focken/forgit.zsh
@@ -72,3 +74,4 @@ function man() {
         }
 # }}}
 
+[ "$(hostname)" = "mbia.local" ] && source /usr/local/opt/z/etc/profile.d/z.sh
