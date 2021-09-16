@@ -1,4 +1,4 @@
-export ZSH=/Users/syn/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 plugins=(virtualenv zsh-syntax-highlighting docker docker-compose)
 
@@ -46,7 +46,7 @@ function vkill {
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
-source $HOME/src/focken/forgit.zsh
+[ -d $HOME/src/focken ] && source $HOME/src/focken/forgit.zsh
 
 export EDITOR=nvim
 export BROWSER=/usr/bin/chromium
