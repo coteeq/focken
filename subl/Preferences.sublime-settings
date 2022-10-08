@@ -1,0 +1,18 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+ "font_face": "Anka/Coder Condensed",
+ "font_size": 14,
+ "rulers": [100],
+ "scroll_past_end": true,
+ "translate_tabs_to_spaces": true,
+ "color_scheme": "Horizon.sublime-color-scheme",
+ "theme": "Adaptive.sublime-theme",
+ "ignored_packages":
+ [
+  "Vintage",
+                  ],
+ "caret_extra_top": 1,
+ "caret_extra_bottom": 1,
+ "caret_extra_width": 0,
+}
