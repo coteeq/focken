@@ -1,0 +1,65 @@
+{
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "editor.fontFamily": "Victor Mono",
+    "editor.fontWeight": "400",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--config",
+        "/home/coteeq/arc/build/config/tests/flake8/flake8.conf"
+    ],
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/target/debug/**": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "[python]": {
+        "editor.wordBasedSuggestions": false,
+        "editor.rulers": [100],
+    },
+    // "python.linting.flake8Path": "/home/coteeq/.local/bin/flake8",
+    "files.associations": {
+        "*.err": "log"
+    },
+    "editor.largeFileOptimizations": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "[markdown]": {
+        "editor.rulers": [80, 120]
+    },
+    "[cpp]": {
+        "editor.rulers": [120]
+    },
+    "go.alternateTools": {
+        "go": "/home/coteeq/.local/go/bin/go"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.bellDuration": 10,
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nano",
+        "tmux",
+        "nvim"
+    ],
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "editor.fontSize": 13,
+    "terminal.integrated.fontSize": 13,
+    "files.maxMemoryForLargeFilesMB": 1024,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "clangd.checkUpdates": false,
+    "catppuccin.italicComments": false,
+    "catppuccin.italicKeywords": false,
+}
