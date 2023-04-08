@@ -4,6 +4,7 @@ plugins=(virtualenv zsh-syntax-highlighting docker docker-compose)
 
 WORDCHARS=${WORDCHARS//\/[&.;]}
 
+DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 # alias {{{
@@ -43,6 +44,9 @@ function vkill {
     [[ -n "$pids" ]] && kill $(echo "$pids" | tr '\n' ' ') && return
     echo "no procs"
 }
+function shadow {
+    ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $@
+}
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosevka-burnt-regular/24"'
 # }}}
@@ -51,11 +55,13 @@ alias feh='feh --font "iosevka-burnt-regular/24" -C ~/.fonts/ --menu-font "iosev
 export EDITOR=nvim
 export BROWSER=/usr/bin/chromium
 
+fixssh() { eval $(tmux show-env -s | grep '^SSH_'); }
+
 source $HOME/.geometry.d/geometry.zsh
 GEOMETRY_INFO=()
 GEOMETRY_PROMPT=(geometry_echo geometry_status geometry_path)
-GEOMETRY_STATUS_SYMBOL=▲
-GEOMETRY_STATUS_SYMBOL_ERROR=▲
+GEOMETRY_STATUS_SYMBOL=$
+GEOMETRY_STATUS_SYMBOL_ERROR=$
 GEOMETRY_STATUS_COLOR=3
 
 # colored man {{{
@@ -73,5 +79,7 @@ function man() {
 			man "$@"
         }
 # }}}
+
+eval "$(zoxide init zsh)"
 
 [ "$(hostname)" = "mbia.local" ] && source /usr/local/opt/z/etc/profile.d/z.sh
