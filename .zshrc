@@ -80,6 +80,11 @@ function man() {
         }
 # }}}
 
-eval "$(zoxide init zsh)"
+if [ -f "$HOME/.zshrc-yandex" ]; then source "$HOME/.zshrc-yandex"; fi
+command zoxide && eval "$(zoxide init zsh)"
 
-[ "$(hostname)" = "mbia.local" ] && source /usr/local/opt/z/etc/profile.d/z.sh
+if [ -f '/home/coteeq/yandex-cloud/path.bash.inc' ]; then source '/home/coteeq/yandex-cloud/path.bash.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
