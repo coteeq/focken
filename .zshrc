@@ -81,7 +81,7 @@ function man() {
 # }}}
 
 if [ -f "$HOME/.zshrc-yandex" ]; then source "$HOME/.zshrc-yandex"; fi
-command zoxide && eval "$(zoxide init zsh)"
+which zoxide > /dev/null && eval "$(zoxide init zsh)"
 
 if [ -f '/home/coteeq/yandex-cloud/path.bash.inc' ]; then source '/home/coteeq/yandex-cloud/path.bash.inc'; fi
 
