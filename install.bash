@@ -1,4 +1,4 @@
-if [ ! -e "~/.token/paste" ]; then
+if [ ! -e "$HOME/.token/paste" ]; then
     echo "Please get the paste token and paste to ~/.token/paste"
     echo "https://nda.ya.ru/t/iYFw9Pty6o8qqc"
     exit 1
@@ -6,7 +6,7 @@ fi
 
 echo 'Install base apt packages...'
 sudo apt update
-sudo apt install -y zsh build-essentialsoftware-properties-common neovim
+sudo apt install -y zsh build-essential software-properties-common neovim
 
 echo 'Install geometry...'
 git clone https://github.com/geometry-zsh/geometry .geometry.d
@@ -34,7 +34,7 @@ function getpaste() {
     else
         paste_url="$1"
     fi
-    https --follow --body "$paste_url" "Authorization:OAuth $(cat ~/.token/paste)"
+    https --follow --body "$paste_url" "Authorization:OAuth $(cat $HOME/.token/paste)"
 }
 
 echo 'Install yandex tools...'
