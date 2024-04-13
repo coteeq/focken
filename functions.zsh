@@ -46,3 +46,7 @@ function pr() {
         arc pr $@
     fi
 }
+
+function unwrap_logs() {
+    fd -L '\.zst$' | xargs -P 16 -I% bash -c 'zstdcat % | sed "s/\\\n/\n/g" > %.nlog'
+}
