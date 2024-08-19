@@ -1,4 +1,4 @@
-WORDCHARS=${WORDCHARS//\/[&.;]}
+WORDCHARS=''
 
 # FOCKEN_DIR="$(realpath ${0:A:h})"
 FOCKEN_DIR="$HOME/src/focken"
@@ -8,6 +8,10 @@ for bone in ${FOCKEN_DIR}/omz-bones/*.zsh; do
 done
 source ~/.omz-bones/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.omz-bones/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+if [[ ! "$PATH" == *$HOME/.local/bin* ]]; then
+  PATH="${PATH:+${PATH}:}$HOME/.local/bin"
+fi
 
 # alias {{{
 # ============ GIT =============

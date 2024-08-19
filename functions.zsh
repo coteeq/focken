@@ -17,6 +17,10 @@ function shadow {
     ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $@
 }
 
+function shadowcopy {
+    scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $@
+}
+
 # --- YT ---
 
 function find_proto() {
@@ -48,5 +52,6 @@ function pr() {
 }
 
 function unwrap_logs() {
-    fd -L '\.zst$' | xargs -P 16 -I% bash -c 'zstdcat % | sed "s/\\\n/\n/g" > %.nlog'
+    fd -L '\.zst$' | xargs -P 16 -I{} bash -c 'zstdcat {} | sed "s/\\\n/\n/g" > $(x="{}"; echo ${x%.log.zst}).nlog'
+    #                           This shit substitutes '.log.zst' with '.nlog'   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 }
