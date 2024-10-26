@@ -1,0 +1,288 @@
+{
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook",
+        "**/.arc/sequencer/todo": "arcanum.interactiveRebaseEditor",
+        "**/.arc/sequencer/arc-rebase-todo": "arcanum.interactiveRebaseEditor"
+    },
+
+    /// Font profiles
+
+    //! Uosevka
+    // "editor.fontFamily": "Uosevka-Light",
+    // "editor.fontSize": 14,
+    // "terminal.integrated.fontSize": 14,
+    // "editor.lineHeight": 1.35,
+
+    //! Inconsolata
+    "editor.fontSize": 14,
+    "editor.fontFamily": "Inconsolata",
+    "terminal.integrated.fontSize": 14,
+    "editor.lineHeight": 1.2,
+    "editor.letterSpacing": -0.15,
+
+    //! Berkeley Mono
+    // "editor.fontFamily": "Berkeley Mono Fixed",
+    // "editor.lineHeight": 1.4,
+    // "editor.letterSpacing": -0.2,
+    // "editor.fontSize": 12,
+    // "terminal.integrated.fontSize": 12,
+    // NOTE: Fixed in font itself except 'calt' for some reason...
+    // "editor.fontLigatures": "'ss04', 'ss05', 'calt'",
+
+
+
+    //! Anka/Coder
+    // "editor.fontSize": 15,
+    // "editor.fontFamily": "Anka/Coder Condensed",
+    // "terminal.integrated.fontFamily": "Inconsolata",
+    // "terminal.integrated.fontSize": 15,
+    // "editor.lineHeight": 1.25,
+
+
+    //! Commit Mono
+    // "editor.fontFamily": "CommitMono-Light",
+    // // "editor.fontFamily": "CommitMono-Thin",
+    // "editor.fontLigatures":"'ss05'",
+    // "editor.lineHeight": 1.4,
+    // "editor.fontSize": 13,
+    // "terminal.integrated.fontSize": 13,
+    // "editor.letterSpacing": -0.05,
+
+    // "editor.fontFamily": "Whois-mono",
+    // "editor.fontFamily": "Space Mono",
+    // "editor.lineHeight": 1.25,
+    // "editor.letterSpacing": 0.2,
+    // "terminal.integrated.letterSpacing": 1,
+
+    //! Misc
+    // "editor.fontFamily": "Victor Mono",
+    // "editor.fontFamily": "Inconsolata-Regular_Light",
+    // "editor.fontWeight": "400",
+
+    "apc.parts.font.family": {
+        "sidebar": "Inconsolata",
+        "titlebar": "Inconsolata",
+        "activityBar": "Inconsolata",
+        "panel": "Inconsolata",
+        "tabs": "Inconsolata",
+        "statusbar": "Inconsolata",
+        "settings-body": "Inconsolata",
+        "extension-editor": "Inconsolata",
+        "monaco-menu": "Inconsolata",
+        "auxiliarybar": "Inconsolata",
+        "banner": "Inconsolata",
+    },
+
+    "apc.font.family": "Inconsolata",
+    "apc.monospace.font.family": "Inconsolata",
+
+    "apc.statusBar": {
+        "fontSize": 13,
+    },
+
+    "apc.stylesheet": {
+        ".scm-input > .monaco-mouse-cursor-text, .scm-editor-placeholder": {
+            "font-family": "Inconsolata !important",
+        }
+    },
+
+    "apc.header": {
+        "height": 30, // Applied when neither "default" nor "compact" is specified
+    },
+
+    "workbench.colorTheme": "Aria",
+    // "workbench.colorTheme": "Cold Horizon, No Italics",
+    // "workbench.colorTheme": "White Winter",
+
+    "workbench.colorCustomizations": {
+        "[Ario]": {
+            "list.activeSelectionBackground": "#191a1a",
+        },
+        "[White Winter]": {
+            "list.focusHighlightForeground": "#ffffff"
+        }
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "[Ario]": {
+            "rules": {
+                "enumMember": "#bf59c5",
+            }
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Ario]": {
+            "textMateRules": [
+                {
+                    "name": "Default modifiers",
+                    "scope": [
+                        "storage.modifier",
+                    ],
+                    "settings": {
+                        "foreground": "#ABD5FF",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Class types",
+                    "scope": [
+                        "entity.name.type",
+                        "entity.name.scope-resolution.function.definition.cpp",
+                        "entity.name.scope-resolution.parameter.cpp",
+                        "entity.name.scope-resolution.cpp",
+                        "entity.name.scope-resolution",
+                    ],
+                    "settings": {
+                        "foreground": "#bf59c5",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Class/Constructor modifier",
+                    "scope": [
+                        "storage.type"
+                    ],
+                    "settings": {
+                        "foreground": "#21FFB5",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Attribute",
+                    "scope": [
+                        "entity.other.attribute-name"
+                    ],
+                    "settings": {
+                        "foreground": "#FF5370",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Attribute1",
+                    "scope": [
+                        "support.function"
+                    ],
+                    "settings": {
+                        "foreground": "#21FFB5",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Arguments",
+                    "scope": [
+                        "variable.parameter"
+                    ],
+                    "settings": {
+                        "foreground": "#FF9700",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "scope": [
+                        "entity.name.function",
+                        "meta.function-call.generic",
+                        "variable.other.object",
+                        "support.class.builtin",
+                    ],
+                    "settings": {
+                        // "foreground": "#ceebffa0"
+                        "foreground": "#009c9ee0"
+                    }
+                },
+            ],
+        },
+    },
+
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/target/debug/**": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "[python]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.rulers": [
+            100
+        ],
+        "editor.formatOnType": true,
+    },
+    "files.associations": {
+        "*.err": "log",
+        "*.nlog": "log",
+        "stderr.*": "log",
+        "stderr": "log",
+    },
+    "editor.largeFileOptimizations": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "[markdown]": {
+        "editor.rulers": [80, 120]
+    },
+    "[cpp]": {
+        "editor.rulers": [80, 100]
+    },
+    "go.alternateTools": {
+        "go": "/home/coteeq/.local/go/bin/go"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.bellDuration": 10,
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nano",
+        "tmux",
+        "nvim"
+    ],
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "clangd.checkUpdates": false,
+    "catppuccin.italicComments": false,
+    "catppuccin.italicKeywords": false,
+    "remote.autoForwardPorts": false,
+    "cmake.configureOnEdit": true,
+    "cmake.configureSettings": {
+        "CMAKE_CXX_FLAGS": "-fuse-ld=mold -Wno-unused-command-line-argument"
+    },
+    "flake8.args": [
+        "--max-line-length=99"
+    ],
+    "svelte.enable-ts-plugin": true,
+    "zig.zls.enabled": true,
+    "zig.zls.path": "/Users/coteeq/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "ruff.interpreter": [
+        "/usr/bin/python3"
+    ],
+    "ruff.lint.args": [
+        "--line-length",
+        "100"
+    ],
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.layoutControl.enabled": false,
+    "window.commandCenter": false,
+    "terminal.integrated.scrollback": 3000,
+    "keyboard.touchbar.enabled": false,
+    "protoc": {
+        "options": [
+            "-I", "/home/coteeq/arc"
+        ]
+    },
+    "remote.SSH.useExecServer": false,
+    "clangd.fallbackFlags": [
+        "--std=c++20"
+    ],
+    "vscode-yandex-arc.isThreeWayMergeEnabled": false,
+    "workbench.editorLargeFileConfirmation": 5,
+    "vscode-yandex-arc.doNotShowCrowdfundingMessages": true,
+    "update.mode": "manual",
+    "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+    "diffEditor.renderSideBySide": true
+}

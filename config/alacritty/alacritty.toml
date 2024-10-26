@@ -1,0 +1,73 @@
+[font]
+normal = { family = "Uosevka Light", style = "Light" }
+bold = { family = "Uosevka", style = "Bold" }
+size = 16.5
+
+[colors.primary]
+background = "#1A2026"
+foreground = "#FFFFFF"
+
+[colors.cursor]
+cursor = "#FFFFFF"
+
+[window.padding]
+x = 3
+y = 3
+
+[window]
+option_as_alt = "Both"
+
+[colors.normal]
+black = "#242D35"
+red = "#FB6396"
+green = "#94CF95"
+yellow = "#F692B2"
+blue = "#6EC1D6"
+magenta = "#CD84C8"
+cyan = "#7FE4D2"
+white = "#FFFFFF"
+
+[colors.bright]
+black = "#526170"
+red = "#F92D72"
+green = "#6CCB6E"
+yellow = "#F26190"
+blue = "#4CB9D6"
+magenta = "#C269BC"
+cyan = "#58D6BF"
+white = "#F4F5F2"
+
+[cursor]
+style = { shape = "Beam" }
+
+[[hints.enabled]]
+binding = { key = "U", mods = "Control|Shift" }
+command = "open"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Command"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+
+[selection]
+semantic_escape_chars = ".#/,│`|:\"' ()[]{}<>\t"
+
+
+[[keyboard.bindings]]
+key = "ArrowLeft"
+mods = "Option"
+mode = "~Vi"
+chars = "\u001BB"
+
+[[keyboard.bindings]]
+key = "ArrowRight"
+mods = "Option"
+mode = "~Vi"
+chars = "\u001BF"
+
+[[keyboard.bindings]]
+key = "Enter"
+mods = "Command"
+action = "ToggleFullscreen"
