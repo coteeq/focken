@@ -9,16 +9,18 @@
 
     //! Uosevka
     // "editor.fontFamily": "Uosevka-Light",
-    // "editor.fontSize": 14,
-    // "terminal.integrated.fontSize": 14,
-    // "editor.lineHeight": 1.35,
+    // "editor.fontSize": 13,
+    // "terminal.integrated.fontSize": 13,
+    // "editor.lineHeight": 1.25,
+
 
     //! Inconsolata
-    "editor.fontSize": 14,
-    "editor.fontFamily": "Inconsolata",
-    "terminal.integrated.fontSize": 14,
-    "editor.lineHeight": 1.2,
-    "editor.letterSpacing": -0.15,
+    // "editor.fontSize": 14,
+    // "editor.fontFamily": "Inconsolata",
+    // "terminal.integrated.fontSize": 14,
+    // "editor.lineHeight": 1.2,
+    // "editor.letterSpacing": -0.15,
+
 
     //! Berkeley Mono
     // "editor.fontFamily": "Berkeley Mono Fixed",
@@ -30,13 +32,12 @@
     // "editor.fontLigatures": "'ss04', 'ss05', 'calt'",
 
 
-
     //! Anka/Coder
-    // "editor.fontSize": 15,
-    // "editor.fontFamily": "Anka/Coder Condensed",
-    // "terminal.integrated.fontFamily": "Inconsolata",
-    // "terminal.integrated.fontSize": 15,
-    // "editor.lineHeight": 1.25,
+    "editor.fontSize": 13,
+    "editor.fontFamily": "Anka/Coder Condensed",
+    "terminal.integrated.fontFamily": "Inconsolata",
+    "terminal.integrated.fontSize": 14,
+    "editor.lineHeight": 1.3,
 
 
     //! Commit Mono
@@ -48,33 +49,29 @@
     // "terminal.integrated.fontSize": 13,
     // "editor.letterSpacing": -0.05,
 
+
     // "editor.fontFamily": "Whois-mono",
     // "editor.fontFamily": "Space Mono",
     // "editor.lineHeight": 1.25,
     // "editor.letterSpacing": 0.2,
     // "terminal.integrated.letterSpacing": 1,
 
-    //! Misc
-    // "editor.fontFamily": "Victor Mono",
-    // "editor.fontFamily": "Inconsolata-Regular_Light",
-    // "editor.fontWeight": "400",
-
     "apc.parts.font.family": {
-        "sidebar": "Inconsolata",
-        "titlebar": "Inconsolata",
-        "activityBar": "Inconsolata",
-        "panel": "Inconsolata",
-        "tabs": "Inconsolata",
-        "statusbar": "Inconsolata",
-        "settings-body": "Inconsolata",
-        "extension-editor": "Inconsolata",
-        "monaco-menu": "Inconsolata",
-        "auxiliarybar": "Inconsolata",
-        "banner": "Inconsolata",
+        "sidebar": "\"Anka/Coder Condensed\"",
+        "titlebar": "\"Anka/Coder Condensed\"",
+        "activityBar": "\"Anka/Coder Condensed\"",
+        "panel": "\"Anka/Coder Condensed\"",
+        "tabs": "\"Anka/Coder Condensed\"",
+        "statusbar": "\"Anka/Coder Condensed\"",
+        "settings-body": "\"Anka/Coder Condensed\"",
+        "extension-editor": "\"Anka/Coder Condensed\"",
+        "monaco-menu": "\"Anka/Coder Condensed\"",
+        "auxiliarybar": "\"Anka/Coder Condensed\"",
+        "banner": "\"Anka/Coder Condensed\"",
     },
 
-    "apc.font.family": "Inconsolata",
-    "apc.monospace.font.family": "Inconsolata",
+    "apc.font.family": "\"Anka/Coder Condensed\"",
+    "apc.monospace.font.family": "\"Anka/Coder Condensed\"",
 
     "apc.statusBar": {
         "fontSize": 13,
@@ -82,116 +79,28 @@
 
     "apc.stylesheet": {
         ".scm-input > .monaco-mouse-cursor-text, .scm-editor-placeholder": {
-            "font-family": "Inconsolata !important",
+            "font-family": "\"Anka/Coder Condensed\" !important",
         }
     },
 
     "apc.header": {
         "height": 30, // Applied when neither "default" nor "compact" is specified
     },
+    "workbench.activityBar.location": "hidden",
 
     "workbench.colorTheme": "Aria",
     // "workbench.colorTheme": "Cold Horizon, No Italics",
-    // "workbench.colorTheme": "White Winter",
+    "workbench.colorTheme": "White Winter",
+    // "workbench.colorTheme": "Monochrome Dark Amplified",
+    // "workbench.fontAliasing": "auto",
 
     "workbench.colorCustomizations": {
-        "[Ario]": {
-            "list.activeSelectionBackground": "#191a1a",
-        },
         "[White Winter]": {
             "list.focusHighlightForeground": "#ffffff"
         }
     },
-    "editor.semanticTokenColorCustomizations": {
-        "enabled": true,
-        "[Ario]": {
-            "rules": {
-                "enumMember": "#bf59c5",
-            }
-        }
-    },
-    "editor.tokenColorCustomizations": {
-        "[Ario]": {
-            "textMateRules": [
-                {
-                    "name": "Default modifiers",
-                    "scope": [
-                        "storage.modifier",
-                    ],
-                    "settings": {
-                        "foreground": "#ABD5FF",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "name": "Class types",
-                    "scope": [
-                        "entity.name.type",
-                        "entity.name.scope-resolution.function.definition.cpp",
-                        "entity.name.scope-resolution.parameter.cpp",
-                        "entity.name.scope-resolution.cpp",
-                        "entity.name.scope-resolution",
-                    ],
-                    "settings": {
-                        "foreground": "#bf59c5",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "name": "Class/Constructor modifier",
-                    "scope": [
-                        "storage.type"
-                    ],
-                    "settings": {
-                        "foreground": "#21FFB5",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "name": "Attribute",
-                    "scope": [
-                        "entity.other.attribute-name"
-                    ],
-                    "settings": {
-                        "foreground": "#FF5370",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "name": "Attribute1",
-                    "scope": [
-                        "support.function"
-                    ],
-                    "settings": {
-                        "foreground": "#21FFB5",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "name": "Arguments",
-                    "scope": [
-                        "variable.parameter"
-                    ],
-                    "settings": {
-                        "foreground": "#FF9700",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "scope": [
-                        "entity.name.function",
-                        "meta.function-call.generic",
-                        "variable.other.object",
-                        "support.class.builtin",
-                    ],
-                    "settings": {
-                        // "foreground": "#ceebffa0"
-                        "foreground": "#009c9ee0"
-                    }
-                },
-            ],
-        },
-    },
+
+    // "editor.semanticHighlighting.enabled": true,
 
     "files.watcherExclude": {
         "**/.git/objects/**": true,
@@ -259,10 +168,7 @@
     "ruff.interpreter": [
         "/usr/bin/python3"
     ],
-    "ruff.lint.args": [
-        "--line-length",
-        "100"
-    ],
+    "ruff.lineLength": 100,
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
@@ -284,5 +190,8 @@
     "vscode-yandex-arc.doNotShowCrowdfundingMessages": true,
     "update.mode": "manual",
     "diffEditor.useInlineViewWhenSpaceIsLimited": false,
-    "diffEditor.renderSideBySide": true
+    "diffEditor.renderSideBySide": true,
+    "workbench.productIconTheme": "bongocat",
+    "vscode-yandex-arc.telemetryEnabled": false,
+    "notebook.output.textLineLimit": 100,
 }
