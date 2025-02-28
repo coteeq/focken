@@ -1,7 +1,7 @@
 @-moz-document url(about:blank), url(about:newtab) {
-	#newtab-window, html:not(#ublock0-epicker) {
-		background: #222 !important;
-	}
+        #newtab-window, html:not(#ublock0-epicker) {
+                background: #222 !important;
+        }
 }
 
 @-moz-document url-prefix(https://raw.githubusercontent.com) {
@@ -18,8 +18,36 @@
     }
 }
 
+@-moz-document url-prefix(https://deploy.yandex-team.ru) {
+    body {
+        background: #122;
+        color: #eee;
+    }
+}
+
+@-moz-document url-prefix(https://yc.yandex-team.ru) {
+    body {
+        background: #122;
+        color: #eee;
+    }
+}
+
+@-moz-document domain(yt.yandex-team.ru) {
+    body {
+        background: #122;
+        color: #eee;
+    }
+}
+
+@-moz-document domain(beta.yt.yandex-team.ru) {
+    body {
+        background: #122;
+        color: #eee;
+    }
+}
+
 @-moz-document url-prefix(https://coredumps.yandex-team.ru) {
   pre {
-    font-family: Uosevka !important;
+    font-family: Inconsolata !important;
   }
 }
