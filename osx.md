@@ -7,6 +7,7 @@ $ defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
 maccy https://maccy.app/
 raycast https://www.raycast.com/
 aldente https://apphousekitchen.com/pricing/
+itsycal https://www.mowglii.com/itsycal/
 
 ### Disable 'esc exits fullscreen in firefox'
 about:config -> browser.fullscreen.exit_on_escape = false
