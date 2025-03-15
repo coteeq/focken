@@ -19,14 +19,12 @@ alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold 
 alias gloga="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 # ==============================
 
-alias v='nvim'
 alias venv='python3 -m venv'
 alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name'
 alias ssh='TERM=xterm ssh'
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
 alias py='python3'
 alias ag='rg --no-heading'
-alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 # }}}
 
 # [ -d $HOME/src/focken ] && source $HOME/src/focken/forgit.zsh
