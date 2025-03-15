@@ -29,8 +29,8 @@ alias ag='rg --no-heading'
 
 # [ -d $HOME/src/focken ] && source $HOME/src/focken/forgit.zsh
 
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=hx
+export VISUAL=hx
 export PAGER=less
 
 source $HOME/.geometry.d/geometry.zsh
