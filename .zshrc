@@ -43,3 +43,6 @@ GEOMETRY_STATUS_COLOR=3
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#308888"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+FOCKEN_SUBLIME_DIR="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+[ -d "$FOCKEN_SUBLIME_DIR" ] && export PATH="$PATH:$FOCKEN_SUBLIME_DIR"
