@@ -34,8 +34,15 @@ export VISUAL=hx
 export PAGER=less
 
 source $HOME/.geometry.d/geometry.zsh
+
+function yt_proxy() {
+    if [ -v YT_PROXY ]; then
+        echo "($YT_PROXY)"
+    fi
+}
+
 GEOMETRY_INFO=()
-GEOMETRY_PROMPT=(geometry_echo geometry_path geometry_status)
+GEOMETRY_PROMPT=(geometry_echo geometry_path yt_proxy geometry_status)
 GEOMETRY_STATUS_SYMBOL=$
 GEOMETRY_STATUS_SYMBOL_ERROR=$
 GEOMETRY_STATUS_COLOR=3
