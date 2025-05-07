@@ -21,6 +21,16 @@ function shadowcopy {
     scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $@
 }
 
+# shoot = shadow root
+function shoot {
+    ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -l root $@
+}
+
+# choot = copy shadow root
+function choot {
+    scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -l root $@
+}
+
 # --- YT ---
 
 function find_proto() {
