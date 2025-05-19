@@ -28,7 +28,7 @@ function shoot {
 
 # choot = copy shadow root
 function choot {
-    scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -l root $@
+    scp -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@$@
 }
 
 # --- YT ---
