@@ -31,7 +31,8 @@ alias ag='rg --no-heading'
 
 export EDITOR=hx
 export VISUAL=hx
-export PAGER=less
+export PAGER='less -FR'
+export ARC_PAGER='less -FR'
 
 source $HOME/.geometry.d/geometry.zsh
 
