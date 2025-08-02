@@ -44,8 +44,13 @@ function yt_proxy() {
 
 GEOMETRY_INFO=()
 GEOMETRY_PROMPT=(geometry_echo geometry_path yt_proxy geometry_status)
-GEOMETRY_STATUS_SYMBOL=$
-GEOMETRY_STATUS_SYMBOL_ERROR=$
+if [ "$(hostname)" = "coteeq-os" ]; then
+    GEOMETRY_STATUS_SYMBOL="¢"
+    GEOMETRY_STATUS_SYMBOL_ERROR="¢"
+else
+    GEOMETRY_STATUS_SYMBOL="$"
+    GEOMETRY_STATUS_SYMBOL_ERROR="$"
+fi
 GEOMETRY_STATUS_COLOR=3
 
 export BAT_STYLE=snip
