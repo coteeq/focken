@@ -33,6 +33,7 @@ export EDITOR=hx
 export VISUAL=hx
 export PAGER='less -FR'
 export ARC_PAGER='less -FR'
+export ARC_EDITOR='hx'
 
 source $HOME/.geometry.d/geometry.zsh
 
@@ -59,6 +60,7 @@ export BAT_PAGING=never
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#308888"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -d ~/.fzf/shell ] && source ~/.fzf/shell/key-bindings.zsh
 
 FOCKEN_SUBLIME_DIR="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 [ -d "$FOCKEN_SUBLIME_DIR" ] && export PATH="$PATH:$FOCKEN_SUBLIME_DIR"
