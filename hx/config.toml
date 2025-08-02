@@ -1,5 +1,4 @@
 theme = "base16_transparent"
-# theme = "term16_light"
 
 [editor]
 bufferline = "multiple"
@@ -26,3 +25,12 @@ C-r = ":config-reload"
 [keys.normal]
 A-tab = ":buffer-next"
 A-S-tab = ":buffer-previous"
+
+A-j = "half_page_down"
+A-k = "half_page_up"
+A-w = ":buffer-close"
+A-p = "buffer_picker"
+
+
+[keys.normal.g]
+G = "goto_file_end"
