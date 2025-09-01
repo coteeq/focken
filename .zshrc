@@ -32,7 +32,7 @@ alias ag='rg --no-heading'
 export EDITOR=hx
 export VISUAL=hx
 export PAGER='less -FR'
-export ARC_PAGER='less -FR'
+export ARC_PAGER='less -FR -+X'
 export ARC_EDITOR='hx'
 
 source $HOME/.geometry.d/geometry.zsh
