@@ -8,9 +8,13 @@ maccy https://maccy.app/
 raycast https://www.raycast.com/
 aldente https://apphousekitchen.com/pricing/
 itsycal https://www.mowglii.com/itsycal/
+betterdisplay https://github.com/waydabber/BetterDisplay
 
 ### Disable 'esc exits fullscreen in firefox'
 about:config -> browser.fullscreen.exit_on_escape = false
 
 ### Disable click-on-desktop
 Settings -> Desktop & Dock -> Desktop & Stage Manager -> Click wallpaper
+
+### Caps lang switch
+search `Use the Caps Lock key to switch to and from U.S.`
