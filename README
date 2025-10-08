@@ -10,5 +10,15 @@ curl -fsSL https://raw.githubusercontent.com/coteeq/focken/master/.zshrc > ~/.zs
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh /dev/stdin -y
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-cargo install fd-find du-dust ripgrep git-delta bat hexyl exa zoxide
-curl https://nda.ya.ru/t/Yxq2Yzsq4FQnvL
+
+cargo install \
+	fd-find \
+	du-dust \
+	ripgrep \
+	git-delta \
+	bat \
+	hexyl \
+	eza \
+	zoxide \
+	jless \
+	xplr
