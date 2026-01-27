@@ -1,0 +1,18 @@
+.monaco-tree .monaco-tree-row .label-name,
+.monaco-list .monaco-list-row
+.monaco-icon-label .label-name,
+.monaco-highlighted-label,
+.monaco-workbench, .monaco-workbench.mac,
+div.view-lines, div.view-lines.monaco-mouse-cursor-text
+{
+    font-family: "Anka/Coder Condensed";
+}
+
+/* div.view-lines, div.view-lines.monaco-mouse-cursor-text, */
+.editorPlaceholder {
+    font-family: "Anka/Coder Condensed" !important;
+}
+
+body, html {
+    --vscode-font-family: "Anka/Coder Condensed";
+}
