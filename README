@@ -21,4 +21,5 @@ cargo install \
 	eza \
 	zoxide \
 	jless \
-	xplr
+	xplr \
+	tokei
