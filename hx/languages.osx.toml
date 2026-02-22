@@ -42,3 +42,33 @@ logLevel = "debug"
 [language-server.basedpyright]
 command = "uvx"
 args = ["--from", "basedpyright", "basedpyright-langserver", "--stdio"]
+
+
+[[language]]
+name = "c"
+scope = "source.c"
+injection-regex = "c"
+file-types = ["c"] # TODO: ["h"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "clangd" ]
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.clangd.config]
+fallbackFlags = ["--std=c++17", "--std=c17"]
+
+
+[[language]]
+name = "zig"
+scope = "source.zig"
+injection-regex = "zig"
+file-types = ["zig", "zon"]
+roots = ["build.zig"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+language-servers = [ "zls" ]
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+
+[language-server.zls]
+command = "zls"
