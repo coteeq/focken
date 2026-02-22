@@ -20,7 +20,7 @@ alias gloga="git log --graph --abbrev-commit --decorate --format=format:'%C(bold
 # ==============================
 
 alias venv='python3 -m venv'
-alias l='LC_ALL=C EXA_COLORS="da=0;35" exa -l -a --sort name'
+alias l='LC_ALL=C eza -l -a --sort name'
 alias ssh='TERM=xterm ssh'
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
 alias py='python3'
