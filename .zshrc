@@ -25,15 +25,16 @@ alias ssh='TERM=xterm ssh'
 alias valg='valgrind --leak-check=full --track-origins=yes -v'
 alias py='python3'
 alias ag='rg --no-heading'
+alias nv='nvim'
 # }}}
 
 # [ -d $HOME/src/focken ] && source $HOME/src/focken/forgit.zsh
 
-export EDITOR=hx
-export VISUAL=hx
+export EDITOR=nvim
+export VISUAL=nvim
 export PAGER='less -FR'
 export ARC_PAGER='less -FR -+X'
-export ARC_EDITOR='hx'
+export ARC_EDITOR='nvim'
 
 source $HOME/.geometry.d/geometry.zsh
 
