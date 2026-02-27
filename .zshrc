@@ -44,8 +44,14 @@ function yt_proxy() {
     fi
 }
 
+function zmx_session() {
+    if [ -v ZMX_SESSION ]; then
+        echo "Z $ZMX_SESSION"
+    fi
+}
+
 GEOMETRY_INFO=()
-GEOMETRY_PROMPT=(geometry_echo geometry_path yt_proxy geometry_status)
+GEOMETRY_PROMPT=(zmx_session geometry_echo geometry_path yt_proxy geometry_status)
 if [ "$(hostname)" = "coteeq-os" ]; then
     GEOMETRY_STATUS_SYMBOL="¢"
     GEOMETRY_STATUS_SYMBOL_ERROR="¢"
