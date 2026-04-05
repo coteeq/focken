@@ -4,13 +4,28 @@ INSTALL
 =======
 
 sudo apt update
-sudo apt install -y zsh build-essential neovim
-git clone https://github.com/geometry-zsh/geometry .geometry.d
-curl -fsSL https://raw.githubusercontent.com/coteeq/focken/master/.zshrc > ~/.zshrc
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh /dev/stdin -y
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sudo apt install -y zsh build-essential neovim \
+	manpages-dev
 
+# focken
+mkdir ~/src
+git clone git@github.com:coteeq/focken ~/src/focken
+
+# shell
+git clone https://github.com/geometry-zsh/geometry .geometry.d
+ln -s $(realpath ~/src/focken/.zshrc) ~/.zshrc
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+mkdir ~/.omz-bones
+(
+    cd ~/.omz-bones
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git
+)
+
+# for chsh, just `exec /usr/bin/zsh` in bashrc
+
+# tools
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh /dev/stdin -y
 cargo install \
 	fd-find \
 	du-dust \
@@ -22,4 +37,9 @@ cargo install \
 	zoxide \
 	jless \
 	xplr \
-	tokei
+	tokei \
+	tree-sitter-cli
+
+# vscode workspaces
+py.env https://paste.yandex-team.ru/4dac3d54-6fb3-410d-a51b-060366ac1af3
+code-ws https://paste.yandex-team.ru/99380ce0-037f-454a-84ab-091857e829a7
