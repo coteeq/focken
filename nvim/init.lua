@@ -1,9 +1,14 @@
 vim.g.clipboard = 'osc52'
+
 vim.o.mouse = 'a'
 vim.o.number = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 4
+vim.o.modeline = false
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.cmd.colorscheme("default")
 
 -- vim.o.showmode = false
 
@@ -18,11 +23,17 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- don't lose selection
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.mousescroll = 'ver:3,hor:2'
 vim.o.foldmethod = 'marker'
+
+vim.o.wrap = true
 
 -- lazy bootstrap {{{
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -43,73 +54,12 @@ vim.opt.rtp:prepend(lazypath)
 
 -- }}}
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+nvcmd = require("cmd")
+nvcmd.map({'n', 'x', 'o'}, '<Leader>c', "toggle_cmdline")
 
 -- Setup lazy.nvim
-require("lazy").setup({
-  {
-    "j-hui/fidget.nvim",
-    opts = {
-      notification = {
-        override_vim_notify = true,
-      },
-    },
-  },
-  { url = "https://codeberg.org/andyg/leap.nvim.git", opts = {} },
-  { "serhez/bento.nvim", opts = { ui = { floating = { max_rendered_buffers = 20 } } } },
-  
-  { "karb94/neoscroll.nvim", opts = {} },
-  {
-    "nvim-mini/mini.nvim",
-    config = function()
-      require("mini.basics").setup({
-        mappings = {
-          option_toggle_prefix = "", -- disable
-        },
-        autocommands = {
-          basic = false,
-        },
-      })
-
-      local miniclue = require('mini.clue')
-
-      miniclue.setup({
-        triggers = {
-          { mode = 'n', keys = 'g' },
-        },
-        clues = {
-          miniclue.gen_clues.g(),
-        },
-        window = {
-          delay = 200,
-        },
-      })
-
-      require("mini.cmdline").setup({
-        autocorrect = { enable = false },
-	autocomplete = { delay = 1000 },
-      })
-
-      require("mini.sessions").setup()
-
-      require("mini.pick").setup()
-
-      require("mini.statusline").setup({
-
-      })
-
-    end
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    version = '*',
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        -- optional but recommended
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    },
-  },
+require("lazy").setup("extralazy", {
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
@@ -125,7 +75,3 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
-
-vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
-
-
