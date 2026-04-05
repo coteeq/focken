@@ -65,3 +65,8 @@ function unwrap_logs() {
     fd -L '\.zst$' | xargs -P 16 -I{} bash -c 'zstdcat {} | sed "s/\\\n/\n/g" > $(x="{}"; echo ${x%.log.zst}).nlog'
     #                           This shit substitutes '.log.zst' with '.nlog'   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 }
+
+function loc() {
+	curl -sS https://1.1.1.1/cdn-cgi/trace | grep -E -- '(loc|colo)='
+}
+
