@@ -55,6 +55,9 @@ GEOMETRY_PROMPT=(zmx_session geometry_echo geometry_path yt_proxy geometry_statu
 if [ "$(hostname)" = "coteeq-os" ]; then
     GEOMETRY_STATUS_SYMBOL="¢"
     GEOMETRY_STATUS_SYMBOL_ERROR="¢"
+elif [[ $(hostname) = vcoteeq* ]]; then
+    GEOMETRY_STATUS_SYMBOL="€"
+    GEOMETRY_STATUS_SYMBOL_ERROR="€"
 else
     GEOMETRY_STATUS_SYMBOL="$"
     GEOMETRY_STATUS_SYMBOL_ERROR="$"
