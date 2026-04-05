@@ -3,6 +3,7 @@
 .monaco-icon-label .label-name,
 .monaco-highlighted-label,
 .monaco-workbench, .monaco-workbench.mac,
+.monaco-hover code,
 div.view-lines, div.view-lines.monaco-mouse-cursor-text
 {
     font-family: "Anka/Coder Condensed";
@@ -15,4 +16,5 @@ div.view-lines, div.view-lines.monaco-mouse-cursor-text
 
 body, html {
     --vscode-font-family: "Anka/Coder Condensed";
+    --monaco-monospace-font: "Anka/Coder Condensed";
 }
