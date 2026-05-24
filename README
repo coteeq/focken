@@ -22,6 +22,12 @@ mkdir ~/.omz-bones
     git clone https://github.com/zsh-users/zsh-autosuggestions.git
 )
 
+(
+    cd /tmp
+    curl -OL https://go.dev/dl/go1.26.1.linux-amd64.tar.gz
+    tar -C ~/.local -xvf go1.26.1.linux-amd64.tar.gz
+)
+
 # for chsh, just `exec /usr/bin/zsh` in bashrc
 
 # tools
