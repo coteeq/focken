@@ -37,6 +37,7 @@ alias nv='nvim'
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER='less -FR'
+export LESS='FR'
 export ARC_PAGER='less -FR -+X'
 export ARC_EDITOR='nvim'
 
