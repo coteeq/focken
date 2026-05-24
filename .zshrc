@@ -13,6 +13,10 @@ if [[ ! "$PATH" == *$HOME/.local/bin* ]]; then
   PATH="${PATH:+${PATH}:}$HOME/.local/bin"
 fi
 
+if [[ ! "$PATH" == *$HOME/.local/go/bin* ]]; then
+  PATH="${PATH:+${PATH}:}$HOME/.local/go/bin"
+fi
+
 # alias {{{
 # ============ GIT =============
 alias glog="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
@@ -46,7 +50,7 @@ function yt_proxy() {
 
 function zmx_session() {
     if [ -v ZMX_SESSION ]; then
-        echo "Z $ZMX_SESSION"
+        echo "⧖ $ZMX_SESSION"
     fi
 }
 
@@ -71,6 +75,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#308888"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -d ~/.fzf/shell ] && source ~/.fzf/shell/key-bindings.zsh
+
+if command -v zmx &> /dev/null; then
+  eval "$(zmx completions zsh)"
+fi
 
 FOCKEN_SUBLIME_DIR="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 [ -d "$FOCKEN_SUBLIME_DIR" ] && export PATH="$PATH:$FOCKEN_SUBLIME_DIR"
