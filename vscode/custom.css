@@ -4,7 +4,7 @@
 .monaco-highlighted-label,
 .monaco-workbench, .monaco-workbench.mac,
 .monaco-hover code,
-div.view-lines, div.view-lines.monaco-mouse-cursor-text
+div.view-lines, scm-editor div.view-lines.monaco-mouse-cursor-text > div
 {
     font-family: "Anka/Coder Condensed";
 }
