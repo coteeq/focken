@@ -16,50 +16,37 @@ function M.setup()
 
     vim.api.nvim_create_autocmd('PackChanged', { callback = hooks })
 
+    local function pack(url, version)
+        return {
+            src = url,
+            version = version
+        }
+    end
+
+    local function gh(repo, version) return pack("https://github.com/" .. repo, version) end
+    local function cb(repo, version) return pack("https://codeberg.org/" .. repo, version) end
+
     vim.pack.add({
-        "https://github.com/j-hui/fidget.nvim",
-        "https://codeberg.org/andyg/leap.nvim.git",
-        "https://github.com/serhez/bento.nvim",
-        "https://github.com/karb94/neoscroll.nvim",
-        "https://github.com/nvim-mini/mini.nvim",
+        gh("j-hui/fidget.nvim"),
+        cb("andyg/leap.nvim.git"),
+        gh("serhez/bento.nvim"),
+        gh("karb94/neoscroll.nvim"),
+        gh("nvim-mini/mini.nvim"),
 
-        "https://github.com/nvim-lua/plenary.nvim",
-        "https://github.com/nvim-telescope/telescope.nvim",
-        "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+        gh("nvim-lua/plenary.nvim"),
+        gh("nvim-telescope/telescope.nvim"),
+        gh("nvim-telescope/telescope-fzf-native.nvim"),
 
+        gh("petertriho/nvim-scrollbar", "f8e87b96cd6362ef8579be456afee3b38fd7e2a8")
 
-        {
-            src = "https://github.com/petertriho/nvim-scrollbar",
-            version = "f8e87b96cd6362ef8579be456afee3b38fd7e2a8",
-        },
+        gh("nvim-tree/nvim-tree.lua", "b3772adec8db61ba9098c5624a0823a77be3a23d")
+        gh("lewis6991/gitsigns.nvim", "a462f416e2ce4744531c6256252dee99a7d34a83")
+        gh("nvim-treesitter/nvim-treesitter", "4916d6592ede8c07973490d9322f187e07dfefac")
+        gh("nvim-treesitter/nvim-treesitter-textobjects", "93d60a475f0b08a8eceb99255863977d3a25f310")
 
-        {
-            src = "https://github.com/nvim-tree/nvim-tree.lua",
-            version = "b3772adec8db61ba9098c5624a0823a77be3a23d",
-        },
-        {
-            src = "https://github.com/lewis6991/gitsigns.nvim",
-            version = "a462f416e2ce4744531c6256252dee99a7d34a83",
-        },
-        {
-            src = "https://github.com/nvim-treesitter/nvim-treesitter",
-            version = "4916d6592ede8c07973490d9322f187e07dfefac",
-        },
-        {
-            src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-            version = "93d60a475f0b08a8eceb99255863977d3a25f310",
-        },
+        gh("saghen/blink.cmp", "78336bc89ee5365633bcf754d93df01678b5c08f") -- v1.10.2
 
-        {
-            src = "https://github.com/saghen/blink.cmp",
-            version = "78336bc89ee5365633bcf754d93df01678b5c08f", -- v1.10.2
-        },
-
-        {
-            src = "https://github.com/mrcjkb/rustaceanvim",
-            commit = "bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463",
-        },
-
+        gh("mrcjkb/rustaceanvim", "bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463")
     })
 
     -- Setup lazy.nvim
@@ -130,7 +117,19 @@ function M.setup()
     --     })
     -- })
 
-    local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+    local filetypes = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc'
+    }
     require('nvim-treesitter').install(filetypes)
     vim.api.nvim_create_autocmd('FileType', {
         pattern = filetypes,
