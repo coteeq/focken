@@ -90,6 +90,15 @@ function sssh() {
     IFS= read -r -d 'y' response
     stty "$stty_saved"
 
+    # Pop 99 times from kitty kbd protocol stack
+    printf '\e[<99u'
+
+    # Show cursor
+    printf '\e[?25h'
+
+    # disable modifyOtherKeys
+    printf '\e[>4;0m'
+
     # Exit alt screen only if active (1$y is active, 2$y is non-active)
     local pattern='\?1049;1\$'
     if [[ "$response" =~ $pattern ]]; then
