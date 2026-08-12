@@ -67,7 +67,11 @@ function unwrap_logs() {
 }
 
 function loc() {
-	curl -sS https://1.1.1.1/cdn-cgi/trace | grep -E -- '(loc|colo)='
+    curl -sS https://1.1.1.1/cdn-cgi/trace | grep -E -- '(loc|colo)='
+}
+
+function loc6() {
+    curl -sS -6 https://1.1.1.1/cdn-cgi/trace | grep -E -- '(loc|colo)='
 }
 
 function sssh() {
