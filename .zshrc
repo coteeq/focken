@@ -30,6 +30,8 @@ alias valg='valgrind --leak-check=full --track-origins=yes -v'
 alias py='python3'
 alias ag='rg --no-heading'
 alias nv='nvim'
+alias sy='sssh ya'
+alias sv='sssh vya'
 # }}}
 
 # [ -d $HOME/src/focken ] && source $HOME/src/focken/forgit.zsh
@@ -83,3 +85,10 @@ fi
 
 FOCKEN_SUBLIME_DIR="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 [ -d "$FOCKEN_SUBLIME_DIR" ] && export PATH="$PATH:$FOCKEN_SUBLIME_DIR"
+
+BUN_BIN="$HOME/.bun/bin"
+[ -d "$BUN_BIN" ] && export PATH="$PATH:$BUN_BIN"
+
+# bun completions
+BUN_COMP="$HOME/.bun/_bun"
+[ -s "$BUN_COMP" ] && source "$BUN_COMP"
