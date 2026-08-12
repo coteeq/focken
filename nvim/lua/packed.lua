@@ -28,16 +28,32 @@ function M.setup()
       "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 
 
-      { src = "https://github.com/petertriho/nvim-scrollbar", commit = "f8e87b96cd6362ef8579be456afee3b38fd7e2a8" },
+      {
+        src = "https://github.com/petertriho/nvim-scrollbar",
+        version = "f8e87b96cd6362ef8579be456afee3b38fd7e2a8",
+      },
 
       {
         src = "https://github.com/nvim-tree/nvim-tree.lua",
-        commit = "b3772adec8db61ba9098c5624a0823a77be3a23d",
+        version = "b3772adec8db61ba9098c5624a0823a77be3a23d",
       },
-      { src = "https://github.com/lewis6991/gitsigns.nvim", commit = "a462f416e2ce4744531c6256252dee99a7d34a83" },
-      { src = "https://github.com/nvim-treesitter/nvim-treesitter", commit = "4916d6592ede8c07973490d9322f187e07dfefac" },
-      { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", commit = "93d60a475f0b08a8eceb99255863977d3a25f310" },
-      
+      {
+        src = "https://github.com/lewis6991/gitsigns.nvim",
+        version = "a462f416e2ce4744531c6256252dee99a7d34a83",
+      },
+      {
+        src = "https://github.com/nvim-treesitter/nvim-treesitter",
+        version = "4916d6592ede8c07973490d9322f187e07dfefac",
+      },
+      {
+        src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+        version = "93d60a475f0b08a8eceb99255863977d3a25f310",
+      },
+
+      {
+        src = "https://github.com/saghen/blink.cmp",
+        version = "78336bc89ee5365633bcf754d93df01678b5c08f", -- v1.10.2
+      },
     })
 
     -- Setup lazy.nvim
@@ -133,6 +149,8 @@ function M.setup()
         },
       },
     })
+
+    require("blink.cmp").setup{}
 end
 
 return M
