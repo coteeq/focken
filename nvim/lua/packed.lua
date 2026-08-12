@@ -2,101 +2,101 @@ local M = {}
 
 function M.setup()
     local hooks = function(ev)
-      local name, kind = ev.data.spec.name, ev.data.kind
-      vim.print("Hooked on " .. name)
-      if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
-        vim.print("Trying to load fzf")
-        vim.system(
-          { 'make' },
-          { cwd = ev.data.path }
-        ):wait()
-        vim.print("Loaded fzf")
-      end
+        local name, kind = ev.data.spec.name, ev.data.kind
+        vim.print("Hooked on " .. name .. " (kind = " .. kind .. ")")
+        if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
+            vim.print("Trying to load fzf")
+            vim.system(
+                { 'make' },
+                { cwd = ev.data.path }
+            ):wait()
+            vim.print("Loaded fzf")
+        end
     end
 
     vim.api.nvim_create_autocmd('PackChanged', { callback = hooks })
 
     vim.pack.add({
-      "https://github.com/j-hui/fidget.nvim",
-      "https://codeberg.org/andyg/leap.nvim.git",
-      "https://github.com/serhez/bento.nvim",
-      "https://github.com/karb94/neoscroll.nvim",
-      "https://github.com/nvim-mini/mini.nvim",
+        "https://github.com/j-hui/fidget.nvim",
+        "https://codeberg.org/andyg/leap.nvim.git",
+        "https://github.com/serhez/bento.nvim",
+        "https://github.com/karb94/neoscroll.nvim",
+        "https://github.com/nvim-mini/mini.nvim",
 
-      "https://github.com/nvim-lua/plenary.nvim",
-      "https://github.com/nvim-telescope/telescope.nvim",
-      "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+        "https://github.com/nvim-lua/plenary.nvim",
+        "https://github.com/nvim-telescope/telescope.nvim",
+        "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 
 
-      {
-        src = "https://github.com/petertriho/nvim-scrollbar",
-        version = "f8e87b96cd6362ef8579be456afee3b38fd7e2a8",
-      },
+        {
+            src = "https://github.com/petertriho/nvim-scrollbar",
+            version = "f8e87b96cd6362ef8579be456afee3b38fd7e2a8",
+        },
 
-      {
-        src = "https://github.com/nvim-tree/nvim-tree.lua",
-        version = "b3772adec8db61ba9098c5624a0823a77be3a23d",
-      },
-      {
-        src = "https://github.com/lewis6991/gitsigns.nvim",
-        version = "a462f416e2ce4744531c6256252dee99a7d34a83",
-      },
-      {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter",
-        version = "4916d6592ede8c07973490d9322f187e07dfefac",
-      },
-      {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-        version = "93d60a475f0b08a8eceb99255863977d3a25f310",
-      },
+        {
+            src = "https://github.com/nvim-tree/nvim-tree.lua",
+            version = "b3772adec8db61ba9098c5624a0823a77be3a23d",
+        },
+        {
+            src = "https://github.com/lewis6991/gitsigns.nvim",
+            version = "a462f416e2ce4744531c6256252dee99a7d34a83",
+        },
+        {
+            src = "https://github.com/nvim-treesitter/nvim-treesitter",
+            version = "4916d6592ede8c07973490d9322f187e07dfefac",
+        },
+        {
+            src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+            version = "93d60a475f0b08a8eceb99255863977d3a25f310",
+        },
 
-      {
-        src = "https://github.com/saghen/blink.cmp",
-        version = "78336bc89ee5365633bcf754d93df01678b5c08f", -- v1.10.2
-      },
+        {
+            src = "https://github.com/saghen/blink.cmp",
+            version = "78336bc89ee5365633bcf754d93df01678b5c08f", -- v1.10.2
+        },
     })
 
     -- Setup lazy.nvim
     require("fidget").setup({
-      notification = {
-        override_vim_notify = true,
-      },
+        notification = {
+            override_vim_notify = true,
+        },
     })
     require("leap").setup({})
     require("bento").setup({
-      ui = {
-        floating = {
-          max_rendered_buffers = 20
+        ui = {
+            floating = {
+                max_rendered_buffers = 20
+            }
         }
-      }
     })
     require("neoscroll").setup({})
     require("mini.basics").setup({
-      mappings = {
-        option_toggle_prefix = "", -- disable
-      },
-      autocommands = {
-        basic = false,
-      },
+        mappings = {
+            option_toggle_prefix = "", -- disable
+        },
+        autocommands = {
+            basic = false,
+        },
     })
     require("mini.cmdline").setup({
-      autocorrect = { enable = false },
-      autocomplete = { delay = 1000 },
+        autocorrect = { enable = false },
+        autocomplete = { delay = 1000 },
     })
     require("mini.sessions").setup({})
     require("mini.pick").setup({})
     require("mini.statusline").setup({})
 
     require("telescope").setup({
-      defaults = {
-        border = {},
-        borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-        layout_config = {
-          horizontal = {
-            prompt_position = "top",
-          },
+        defaults = {
+            border = {},
+            borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+            layout_config = {
+                horizontal = {
+                    prompt_position = "top",
+                },
+            },
         },
-      },
     })
     require("telescope").load_extension('fzf')
 
@@ -132,22 +132,22 @@ function M.setup()
     })
     local miniclue = require('mini.clue')
     miniclue.setup({
-      triggers = {
-        { mode = { 'n', 'x' }, keys = '<Leader>' },
-        { mode = 'n', keys = 'g' },
-      },
-      clues = {
-        miniclue.gen_clues.g(),
-      },
-      window = {
-        delay = 200,
-        config = {
-          width = 'auto',
-          anchor = 'SE',
-          row = 'auto',
-          col = 'auto',
+        triggers = {
+            { mode = { 'n', 'x' }, keys = '<Leader>' },
+            { mode = 'n', keys = 'g' },
         },
-      },
+        clues = {
+            miniclue.gen_clues.g(),
+        },
+        window = {
+            delay = 200,
+            config = {
+                width = 'auto',
+                anchor = 'SE',
+                row = 'auto',
+                col = 'auto',
+            },
+        },
     })
 
     require("blink.cmp").setup{}
