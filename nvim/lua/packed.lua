@@ -54,6 +54,12 @@ function M.setup()
             src = "https://github.com/saghen/blink.cmp",
             version = "78336bc89ee5365633bcf754d93df01678b5c08f", -- v1.10.2
         },
+
+        {
+            src = "https://github.com/mrcjkb/rustaceanvim",
+            commit = "bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463",
+        },
+
     })
 
     -- Setup lazy.nvim
