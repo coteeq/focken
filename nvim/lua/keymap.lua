@@ -56,12 +56,22 @@ function M.setup()
         { desc = 'toggle cmdheight' }
     )
 
-    vim.keymap.set(
-        'n',
-        '<Leader>b',
-        ':NvimTreeToggle<CR>',
-        { desc = 'toggle tree' }
-    )
+    local function leadermod(key, command, desc)
+        vim.keymap.set(
+            'n',
+            '<Leader>' .. key,
+            command,
+            { desc = desc }
+        )
+    end
+
+    leadermod('b', ':NvimTreeToggle<CR>', 'Toggle tree')
+    leadermod('g', ':Telescope live_grep<CR>', 'live grep')
+    leadermod('o', ':Telescope oldfiles<CR>', 'old files')
+
+    -- try to fix opt+arrow in cmd
+    vim.keymap.set("c", "<M-b>", "<C-Left>")
+    vim.keymap.set("c", "<M-f>", "<C-Right>")
 end
 
 return M
