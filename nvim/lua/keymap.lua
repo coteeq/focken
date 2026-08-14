@@ -26,12 +26,20 @@ function M.setup()
     )
 
     vim.keymap.set(
-        'n', '<Leader>f', 'viw"-y:%s/<C-r>-/<C-r>-/g<Left><Left>',
+        'n', '<Leader>f', 'viw"-y/<C-r>-<CR>',
         { desc = 'Search word' }
     )
     vim.keymap.set(
-        'v', '<Leader>f', '"-y:%s/<C-r>-/<C-r>-/g<Left><Left>',
+        'v', '<Leader>f', '"-y/<C-r>-<CR>',
         { desc = 'Search selection' }
+    )
+    vim.keymap.set(
+        'n', '<Leader>r', 'viw"-y:%s/<C-r>-/<C-r>-/g<Left><Left>',
+        { desc = 'Replace word' }
+    )
+    vim.keymap.set(
+        'v', '<Leader>r', '"-y:%s/<C-r>-/<C-r>-/g<Left><Left>',
+        { desc = 'Replace selection' }
     )
 
     vim.keymap.set(
@@ -45,7 +53,14 @@ function M.setup()
         function()
             vim.o.cmdheight = vim.o.cmdheight > 0 and 0 or 1
         end,
-        { desc = "toggle cmdheight" }
+        { desc = 'toggle cmdheight' }
+    )
+
+    vim.keymap.set(
+        'n',
+        '<Leader>b',
+        ':NvimTreeToggle<CR>',
+        { desc = 'toggle tree' }
     )
 end
 
