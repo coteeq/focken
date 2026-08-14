@@ -18,6 +18,11 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim",
       "version": "'a462f416e2ce4744531c6256252dee99a7d34a83'"
     },
+    "koda.nvim": {
+      "rev": "a7da3ced59eadafbda6eb4d7f7e2a6a3d9ecf858",
+      "src": "https://github.com/oskarnurm/koda.nvim",
+      "version": "'a7da3ced59eadafbda6eb4d7f7e2a6a3d9ecf858'"
+    },
     "leap.nvim": {
       "rev": "156c71aabb68d520c6269db4103c8e5580e3ea67",
       "src": "https://codeberg.org/andyg/leap.nvim.git"
@@ -56,7 +61,8 @@
     },
     "rustaceanvim": {
       "rev": "f74b899ba3e5ab71808c875a95c502555baf7530",
-      "src": "https://github.com/mrcjkb/rustaceanvim"
+      "src": "https://github.com/mrcjkb/rustaceanvim",
+      "version": "'bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463'"
     },
     "telescope-fzf-native.nvim": {
       "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",

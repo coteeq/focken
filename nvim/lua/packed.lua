@@ -37,16 +37,18 @@ function M.setup()
         gh("nvim-telescope/telescope.nvim"),
         gh("nvim-telescope/telescope-fzf-native.nvim"),
 
-        gh("petertriho/nvim-scrollbar", "f8e87b96cd6362ef8579be456afee3b38fd7e2a8")
+        gh("petertriho/nvim-scrollbar", "f8e87b96cd6362ef8579be456afee3b38fd7e2a8"),
 
-        gh("nvim-tree/nvim-tree.lua", "b3772adec8db61ba9098c5624a0823a77be3a23d")
-        gh("lewis6991/gitsigns.nvim", "a462f416e2ce4744531c6256252dee99a7d34a83")
-        gh("nvim-treesitter/nvim-treesitter", "4916d6592ede8c07973490d9322f187e07dfefac")
-        gh("nvim-treesitter/nvim-treesitter-textobjects", "93d60a475f0b08a8eceb99255863977d3a25f310")
+        gh("nvim-tree/nvim-tree.lua", "b3772adec8db61ba9098c5624a0823a77be3a23d"),
+        gh("lewis6991/gitsigns.nvim", "a462f416e2ce4744531c6256252dee99a7d34a83"),
+        gh("nvim-treesitter/nvim-treesitter", "4916d6592ede8c07973490d9322f187e07dfefac"),
+        gh("nvim-treesitter/nvim-treesitter-textobjects", "93d60a475f0b08a8eceb99255863977d3a25f310"),
 
-        gh("saghen/blink.cmp", "78336bc89ee5365633bcf754d93df01678b5c08f") -- v1.10.2
+        gh("saghen/blink.cmp", "78336bc89ee5365633bcf754d93df01678b5c08f"), -- v1.10.2
 
-        gh("mrcjkb/rustaceanvim", "bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463")
+        gh("mrcjkb/rustaceanvim", "bc391bbb8db0dbf3e3e9fe8f9f03112ecbab7463"),
+
+        gh("oskarnurm/koda.nvim", "a7da3ced59eadafbda6eb4d7f7e2a6a3d9ecf858"),
     })
 
     -- Setup lazy.nvim
@@ -80,17 +82,7 @@ function M.setup()
     require("mini.pick").setup({})
     require("mini.statusline").setup({})
 
-    require("telescope").setup({
-        defaults = {
-            border = {},
-            borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-            layout_config = {
-                horizontal = {
-                    prompt_position = "top",
-                },
-            },
-        },
-    })
+    require("telescope").setup({})
     require("telescope").load_extension('fzf')
 
     require("nvim-tree").setup({})
@@ -156,6 +148,11 @@ function M.setup()
     })
 
     require("blink.cmp").setup{}
+
+    require("koda").setup({
+        theme = { dark = "moss", light = "light" }
+    })
+    vim.cmd("colorscheme koda")
 end
 
 return M
